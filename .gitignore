@@ -1,0 +1,4 @@
+*.css.map
+public
+.DS_Store
+node_modules
