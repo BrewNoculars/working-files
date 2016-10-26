@@ -21,52 +21,16 @@ breweriesNearBy.getBreweries = function (userLocation) {
 }
 
 // Brewery DB API starts here!
-// breweriesNearBy.getInfo = function () {
-// 	$.ajax ({
-// 		url: 'http://proxy.hackeryou.com',
-// 		method: 'GET',
-// 		dataType: 'json',
-// 		data:{
-// 			reqUrl: 'http://api.brewerydb.com/v2/search/geo/point',
-// 			params: {
-// 				lat:'43.6532',
-// 				lng:'-79.3832',
-// 				key: '3dae318cdfd5f407dccf3b5974924616'
-// 			}
-// 		}
-
-// 	}).then (function(bInfo){
-// 		console.log(bInfo);
-// 	})
-// }
-
-// breweriesNearBy.getInfo = function () {
-// 	$.ajax ({
-// 		url: 'http://proxy.hackeryou.com',
-// 		method: 'GET',
-// 		dataType: 'json',
-// 		data:{
-// 			reqUrl: 'http://api.brewerydb.com/v2/search/',
-// 			params: {
-// 				q:'brewery',
-// 				key: '3dae318cdfd5f407dccf3b5974924616'
-// 			}
-// 		}
-
-// 	}).then (function(bInfo){
-// 		console.log(bInfo);
-// 	})
-// }
-
 breweriesNearBy.getInfo = function () {
 	$.ajax ({
 		url: 'http://proxy.hackeryou.com',
 		method: 'GET',
 		dataType: 'json',
 		data:{
-			reqUrl: 'http://api.brewerydb.com/v2/breweries/',
+			reqUrl: 'http://api.brewerydb.com/v2/search/geo/point',
 			params: {
-				name:'bellwoods brewery',
+				lat:'43.6532',
+				lng:'-79.3832',
 				key: '3dae318cdfd5f407dccf3b5974924616'
 			}
 		}
@@ -75,5 +39,3 @@ breweriesNearBy.getInfo = function () {
 		console.log(bInfo);
 	})
 }
-
-// Idea = the drop down menu is a call to the brewery DB app == AJAX request to search the name and loads the specific brewery -- description,est,image available
