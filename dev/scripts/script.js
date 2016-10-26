@@ -50,3 +50,5 @@ breweriesNearBy.getInfo = function () {
 		console.log(bInfo);
 	})
 }
+
+jellp 
