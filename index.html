@@ -21,7 +21,15 @@
 			<h2>Find the closest brewery to you!</h2>
 			<form action="">
 				<input type="search" placeholder="Input your city or postal code" value="location">
+
 				<!-- input type for geolocation here -->
+				<form action="">
+					<input id="user-input" class="controls" type="text" value="Search an Address">
+	        		<input id="selector" type="submit" value="Go">	
+				</form>
+				
+
+
 				<input type="submit" value="Find your brew">
 			</form>
 		</section>
@@ -29,6 +37,8 @@
 
 	<section class="results">
 		<!-- iframe for map here -->
+		<div id="map"></div>
+
 		<!-- handlebars/javascript HTML logging for results here -->
 	</section>
 
@@ -37,7 +47,9 @@
 	</footer>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2-bjGOvhQE42Hx5gkwU4Ony1N_Y9x-N8&libraries=places"></script> -->
+	 <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCW8tHjXmHvzEH5qsjFzSH4NN7PVfumqu0&callback">
+    </script>
 	<script src="dev/scripts/script.js"></script>
 </body>
 </html>
