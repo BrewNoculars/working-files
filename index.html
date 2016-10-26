@@ -2,12 +2,42 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>BrewNocular</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato|Vast+Shadow" rel="stylesheet">
+	<link rel="stylesheet" href="public/styles/style.css">
+	<title>BrewNoculars</title>
 </head>
 <body>
-	
+
+	<header>
+		<section class="top-logo"> <!-- something to hold the top logo + return to top of page -->
+			<img src="" alt="">
+		</section>
+
+		<section class="header-search"> <!-- main search -->
+			<img src="" alt=""> <!-- maybe the logo goes here -->
+			<h1>BrewNoculars</h1>
+			<h2>Find the closest brewery to you!</h2>
+			<form action="">
+				<input type="search" placeholder="Input your city or postal code" value="location">
+				<!-- input type for geolocation here -->
+				<input type="submit" value="Find your brew">
+			</form>
+		</section>
+	</header>
+
+	<section class="results">
+		<!-- iframe for map here -->
+		<!-- handlebars/javascript HTML logging for results here -->
+	</section>
+
+	<footer>
+		<p>BrewNoculars copyright 2016; coded by Sarah Karsh, Janel Lucia and Heather Pierce</p>
+	</footer>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2-bjGOvhQE42Hx5gkwU4Ony1N_Y9x-N8&libraries=places"></script>
+	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2-bjGOvhQE42Hx5gkwU4Ony1N_Y9x-N8&libraries=places"></script> -->
 	<script src="dev/scripts/script.js"></script>
 </body>
 </html>
