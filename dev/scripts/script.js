@@ -1,5 +1,4 @@
 var brewNoculars = {};
-
 var breweriesNearBy = {};
 
 breweriesNearBy.mapMarkers = [];
@@ -7,7 +6,7 @@ breweriesNearBy.mapMarkers = [];
 
 
 //FourSquare API Starts here!
-breweriesNearBy.getBreweries = function (userLocation) {
+breweriesNearBy.getBreweries = function(userLocation) {
 	$.ajax ({
 		url:'https://api.foursquare.com/v2/venues/search?client_id=XC45QHEBXODZWSFXRYRBKJCGDNOXYMLR14155RH1SXZ0CPIC&client_secret=BVUIPRJESP1EX4L0GLBO4VLDV0EEIYABKBS0KJOTUFCWV143&v=20160730',
 		method: 'GET',
@@ -19,25 +18,26 @@ breweriesNearBy.getBreweries = function (userLocation) {
 			categoryID:'50327c8591d4c4b30a586d5d'
 		}
 	}).then (function(brewery){
-		console.log(brewery);
+		// console.log('this is brewery', breweryG);
         var breweryGeneral = brewery.response.venues; 
-        console.log(breweryGeneral);
+        console.log('this is breweryGeneral', breweryGeneral);
+      
+
         breweryGeneral.forEach(function(bGData){
-        //     var $bDescription = bData.brewery.description;
-            var $bRealName = bGData.name;
-            var $webSite = bGData.url;
-            var $location = bGData.location.address;
-            var $twitter = bGData.contact.twitter;
-            var $phone = bGData.contact.formattedPhone;
-            console.log($bRealName, $webSite, $location, $twitter,$phone);
+        	// console.log("dataaaaa",bGData)
+        	  breweriesNearBy.handlebars(bGData)
+            // var $bDescription = bGData.brewery.description;
+            // var $bRealName = bGData.name;
+            // var $bWebSite = bGData.url;
+            // var $bLocation = bGData.location.address;
+            // var $bTwitter = bGData.contact.twitter;
+            // var $bPhone = bGData.contact.formattedPhone;
+            // $bRealName = 'sarah'
+            // console.log($bRealName, $bWebSite, $bLocation, $bTwitter, $bPhone);
         });
-
 	})
-
-	var myTemplate = $('#myTemplate').html();
-	var template = Handlebars.compile(myTemplate)
-	$('footer').append(template);
 }
+
 
 // Brewery DB API starts here!
 breweriesNearBy.getInfo = function (latitude, longitude) {
@@ -58,7 +58,7 @@ breweriesNearBy.getInfo = function (latitude, longitude) {
 		var brewerySpecifics = bInfo.data;
 		console.log(brewerySpecifics);
 		brewerySpecifics.forEach(function(bData){
-			console.log(bData);
+
 			var $bImages = bData.brewery.images.medium; //some breweries do not have images, so if erroring to undefined, then we need to code it to the image placeholder path
 			var $bName = bData.brewery.name;
 			var $bEstablished = bData.brewery.established;
@@ -69,13 +69,21 @@ breweriesNearBy.getInfo = function (latitude, longitude) {
 	})
 }
 
+breweriesNearBy.handlebars = function(breweryGeneral){
+	console.log("passed data", breweryGeneral);
+
+	 var $bRealName = breweryGeneral.name;
+
+	var myTemplate = $('#myTemplate').html();
+	var template = Handlebars.compile(myTemplate);
+	var renderedTemplate = template(breweryGeneral);
+	console.log('this is brewery', template)
+	$('footer').append(renderedTemplate);
+};
+
 //GeoLocation API starts Here!!--------------------------------------------------------------->
-
 //API key: AIzaSyCW8tHjXmHvzEH5qsjFzSH4NN7PVfumqu0
-
 // user enters site, site calculates users location
-
-
 
 brewNoculars.getLocation = function() {
 
@@ -213,6 +221,7 @@ brewNoculars.init = function() {
 };
 
 $(function() {
-  brewNoculars.init();
+	breweriesNearBy.getBreweries();
+  // brewNoculars.init();
 })
 

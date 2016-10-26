@@ -9,11 +9,12 @@
 	<script id="myTemplate" type="x-handlebars-template">
 		<div class="resultsCards">
 			<div>
-			<h1>NAME{{bRealName}}</h1>
-			<h2>WEBSITE{{webSite}}</h2>
-			<h2>location{{location}}</h2>
-			<h2>twitter{{twitter}}</h2>
-			<h2>phone{{phone}}</h2>
+			<h1>NAME: {{name}}</h1>
+			<h2>WEBSITE: {{url}}</h2>
+			<h2>LOCATION: {{location.address}}</h2>
+			<h2>Twitter: {{contact.twitter}}</h2>
+			<h2>Phone: {{contact.formattedPhone}}</h2>
+			</div>
 		</div>
 	</script>
 	<title>BrewNoculars</title>
@@ -57,10 +58,8 @@
 	</footer>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	 <!-- <script async defer -->
-    <!-- src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCW8tHjXmHvzEH5qsjFzSH4NN7PVfumqu0&callback"> -->
-    <!-- </script> -->
-
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCW8tHjXmHvzEH5qsjFzSH4NN7PVfumqu0&callback">
+    </script>
 	<script src="dev/scripts/script.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 </body>
