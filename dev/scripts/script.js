@@ -37,7 +37,7 @@ breweriesNearBy.getBreweries = function (userLocation) {
 }
 
 // Brewery DB API starts here!
-breweriesNearBy.getInfo = function () {
+breweriesNearBy.getInfo = function (latitude, longitude) {
 	$.ajax ({
 		url: 'http://proxy.hackeryou.com',
 		method: 'GET',
@@ -47,15 +47,24 @@ breweriesNearBy.getInfo = function () {
 			params: {
 				lat:'43.6532',
 				lng:'-79.3832',
+				radius:5,
 				key: '3dae318cdfd5f407dccf3b5974924616'
 			}
 		}
-
-	}).then (function(bInfo){
-		console.log(bInfo);
+	}).then(function(bInfo){
+		var brewerySpecifics = bInfo.data;
+		console.log(brewerySpecifics);
+		brewerySpecifics.forEach(function(bData){
+			console.log(bData);
+			var $bImages = bData.brewery.images.medium; //some breweries do not have images, so if erroring to undefined, then we need to code it to the image placeholder path
+			var $bName = bData.brewery.name;
+			var $bEstablished = bData.brewery.established;
+			var $bOrganic = bData.brewery.isOrganic;
+			var $bDescription = bData.brewery.description;
+		// console.log($bDescription,$bName,$bOrganic,$bImages,$bEstablished);
+		});
 	})
 }
-
 
 
 
@@ -206,8 +215,3 @@ $(function() {
   brewNoculars.init();
 })
 
-// Idea = the drop down menu is a call to the brewery DB app == AJAX request to search the name and loads the specific brewery -- description,est,image available
-=======
-jellp  -  pathspec 'origin' did not match any file(s) known to git.
-error: pathspec 'master' did not match any file(s) known to git.
->>>>>>> 6cfb6e2fb164f3d58fe26c950c59dfc8d9b7880f
