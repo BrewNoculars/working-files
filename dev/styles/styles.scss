@@ -46,7 +46,7 @@ form {
   }
   #user-input:before{
     content: "\f105";
-    color: $Grey;
+    color: $brewBlack;
     @include responsive-font(1.5vw, 10px, 20px);
     float : right;
     font-family: "FontAwesome";
