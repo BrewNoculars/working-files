@@ -6,6 +6,18 @@
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Lato|Vast+Shadow" rel="stylesheet">
 	<link rel="stylesheet" href="public/styles/style.css">
+	<link rel="stylesheet" href="public/styles/style.css">
+	    <script id="myTemplate" type="x-handlebars-template">
+	        <div class="resultsCards">
+	            <div>
+	            <h1>NAME: {{name}}</h1>
+	            <h2>WEBSITE: {{url}}</h2>
+	            <h2>LOCATION: {{location.address}}</h2>
+	            <h2>Twitter: {{contact.twitter}}</h2>
+	            <h2>Phone: {{contact.formattedPhone}}</h2>
+	            </div>
+	        </div>
+	    </script>
 	<title>BrewNoculars</title>
 </head>
 <body>
@@ -22,20 +34,18 @@
 
 
 				<!-- input type for geolocation here -->
-				<form action="">
-					<input id="user-input" class="controls" type="text" value="Search an Address">
-	        		<input id="selector" type="submit" value="Go">	
-				</form>
-				
-
-
+			<form action="">
+				<input id="user-input" class="controls" type="text" value="Search an Address">
+	   		<input id="selector" type="submit" value="Go">	
+			</form>
 
 		</section>
 	</header>
 
 	<section class="results">
-		<!-- iframe for map here -->
-		<div id="map"></div>
+		<div id="map">
+			
+		</div>
 
 		<!-- handlebars/javascript HTML logging for results here -->
 	</section>

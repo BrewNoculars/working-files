@@ -1,15 +1,13 @@
 var brewNoculars = {};
 
-var breweriesNearBy = {};
-
-breweriesNearBy.mapMarkers = [];
-// breweriesNearBy.mapBounds = new google.maps.LatLngBounds();
+brewNoculars.mapMarkers = [];
+// brewNoculars.mapBounds = new google.maps.LatLngBounds();
 
 
 
 
-
-breweriesNearBy.getInfo = function (latitude, longitude) {
+// BreweryDB API
+brewNoculars.getInfo = function (latitude, longitude) {
 	$.ajax ({
 		url: 'http://proxy.hackeryou.com',
 		method: 'GET',
@@ -39,14 +37,11 @@ breweriesNearBy.getInfo = function (latitude, longitude) {
 }
 
 
-
 //GeoLocation API starts Here!!--------------------------------------------------------------->
 
 //API key: AIzaSyCW8tHjXmHvzEH5qsjFzSH4NN7PVfumqu0
 
 // user enters site, site calculates users location
-
-
 
 brewNoculars.getLocation = function() {
 
@@ -78,7 +73,7 @@ brewNoculars.getLocation = function() {
 // Search field Options----------------------------------------------------------------------->
 
 brewNoculars.getSearchResults = function(search) {
-  console.log("breweriesNearBy.mapMarkers", brewNoculars.mapMarkers);
+  console.log("brewNoculars.mapMarkers", brewNoculars.mapMarkers);
   $.ajax({
     url: 'https://proxy.hackeryou.com',
     method: 'GET',
@@ -146,6 +141,7 @@ brewNoculars.getAddress = function() {
  brewNoculars.showMap = function(lat, lon) {
 			// Create a LatLng object with the GPS coordinates.
 		 var myLatLng = new google.maps.LatLng(lat, lon);
+		 brewNoculars.mapBounds = new google.maps.LatLngBounds();
 		 
 
 			// Create the Map Options
@@ -190,7 +186,7 @@ $(function() {
 
 
 //FourSquare API Starts here!
-breweriesNearBy.getBreweries = function (userLocation) {
+brewNoculars.getBreweries = function (userLocation) {
 	$.ajax ({
 		url:'https://api.foursquare.com/v2/venues/search?client_id=XC45QHEBXODZWSFXRYRBKJCGDNOXYMLR14155RH1SXZ0CPIC&client_secret=BVUIPRJESP1EX4L0GLBO4VLDV0EEIYABKBS0KJOTUFCWV143&v=20160730',
 		method: 'GET',
