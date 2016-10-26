@@ -2,7 +2,6 @@ var brewNoculars = {};
 
 var breweriesNearBy = {};
 
-
 breweriesNearBy.mapMarkers = [];
 
 
@@ -34,6 +33,10 @@ breweriesNearBy.getBreweries = function (userLocation) {
         });
 
 	})
+
+	var myTemplate = $('#myTemplate').html();
+	var template = Handlebars.compile(myTemplate)
+	$('footer').append(template);
 }
 
 // Brewery DB API starts here!
@@ -65,8 +68,6 @@ breweriesNearBy.getInfo = function (latitude, longitude) {
 		});
 	})
 }
-
-
 
 //GeoLocation API starts Here!!--------------------------------------------------------------->
 

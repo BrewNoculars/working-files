@@ -6,6 +6,16 @@
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Lato|Vast+Shadow" rel="stylesheet">
 	<link rel="stylesheet" href="public/styles/style.css">
+	<script id="myTemplate" type="x-handlebars-template">
+		<div class="resultsCards">
+			<div>
+			<h1>NAME{{bRealName}}</h1>
+			<h2>WEBSITE{{webSite}}</h2>
+			<h2>location{{location}}</h2>
+			<h2>twitter{{twitter}}</h2>
+			<h2>phone{{phone}}</h2>
+		</div>
+	</script>
 	<title>BrewNoculars</title>
 </head>
 <body>
@@ -52,5 +62,6 @@
     <!-- </script> -->
 
 	<script src="dev/scripts/script.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 </body>
 </html>
