@@ -51,4 +51,5 @@ breweriesNearBy.getInfo = function () {
 	})
 }
 
-jellp 
+jellp  -  pathspec 'origin' did not match any file(s) known to git.
+error: pathspec 'master' did not match any file(s) known to git.
