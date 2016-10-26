@@ -29,6 +29,10 @@ breweriesNearBy.getBreweries = function (userLocation) {
         });
 
 	})
+
+	var myTemplate = $('#myTemplate').html();
+	var template = Handlebars.compile(myTemplate)
+	$('footer').append(template);
 }
 
 // Brewery DB API starts here!
@@ -50,6 +54,3 @@ breweriesNearBy.getInfo = function () {
 		console.log(bInfo);
 	})
 }
-
-jellp  -  pathspec 'origin' did not match any file(s) known to git.
-error: pathspec 'master' did not match any file(s) known to git.
