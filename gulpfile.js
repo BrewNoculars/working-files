@@ -1,4 +1,3 @@
- var networkInterfaces = require('os').networInterfaces = function() { return []; };
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const concat = require('gulp-concat');
