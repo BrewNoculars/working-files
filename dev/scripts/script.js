@@ -2,8 +2,8 @@ var brewNoculars = {};
 
 var breweriesNearBy = {};
 
+
 breweriesNearBy.mapMarkers = [];
-// breweriesNearBy.mapBounds = new google.maps.LatLngBounds();
 
 
 
@@ -21,56 +21,32 @@ breweriesNearBy.getBreweries = function (userLocation) {
 		}
 	}).then (function(brewery){
 		console.log(brewery);
+        var breweryGeneral = brewery.response.venues; 
+        console.log(breweryGeneral);
+        breweryGeneral.forEach(function(bGData){
+        //     var $bDescription = bData.brewery.description;
+            var $bRealName = bGData.name;
+            var $webSite = bGData.url;
+            var $location = bGData.location.address;
+            var $twitter = bGData.contact.twitter;
+            var $phone = bGData.contact.formattedPhone;
+            console.log($bRealName, $webSite, $location, $twitter,$phone);
+        });
+
 	})
 }
 
 // Brewery DB API starts here!
-// breweriesNearBy.getInfo = function () {
-// 	$.ajax ({
-// 		url: 'http://proxy.hackeryou.com',
-// 		method: 'GET',
-// 		dataType: 'json',
-// 		data:{
-// 			reqUrl: 'http://api.brewerydb.com/v2/search/geo/point',
-// 			params: {
-// 				lat:'43.6532',
-// 				lng:'-79.3832',
-// 				key: '3dae318cdfd5f407dccf3b5974924616'
-// 			}
-// 		}
-
-// 	}).then (function(bInfo){
-// 		console.log(bInfo);
-// 	})
-// }
-
-// breweriesNearBy.getInfo = function () {
-// 	$.ajax ({
-// 		url: 'http://proxy.hackeryou.com',
-// 		method: 'GET',
-// 		dataType: 'json',
-// 		data:{
-// 			reqUrl: 'http://api.brewerydb.com/v2/search/',
-// 			params: {
-// 				q:'brewery',
-// 				key: '3dae318cdfd5f407dccf3b5974924616'
-// 			}
-// 		}
-
-// 	}).then (function(bInfo){
-// 		console.log(bInfo);
-// 	})
-// }
-
 breweriesNearBy.getInfo = function () {
 	$.ajax ({
 		url: 'http://proxy.hackeryou.com',
 		method: 'GET',
 		dataType: 'json',
 		data:{
-			reqUrl: 'http://api.brewerydb.com/v2/breweries/',
+			reqUrl: 'http://api.brewerydb.com/v2/search/geo/point',
 			params: {
-				name:'bellwoods brewery',
+				lat:'43.6532',
+				lng:'-79.3832',
 				key: '3dae318cdfd5f407dccf3b5974924616'
 			}
 		}
@@ -79,6 +55,7 @@ breweriesNearBy.getInfo = function () {
 		console.log(bInfo);
 	})
 }
+
 
 
 
@@ -230,3 +207,7 @@ $(function() {
 })
 
 // Idea = the drop down menu is a call to the brewery DB app == AJAX request to search the name and loads the specific brewery -- description,est,image available
+=======
+jellp  -  pathspec 'origin' did not match any file(s) known to git.
+error: pathspec 'master' did not match any file(s) known to git.
+>>>>>>> 6cfb6e2fb164f3d58fe26c950c59dfc8d9b7880f
