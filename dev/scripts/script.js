@@ -2,7 +2,6 @@ var brewNoculars = {};
 
 var breweriesNearBy = {};
 
-
 //FourSquare API Starts here!
 breweriesNearBy.getBreweries = function (userLocation) {
 	$.ajax ({
@@ -17,6 +16,18 @@ breweriesNearBy.getBreweries = function (userLocation) {
 		}
 	}).then (function(brewery){
 		console.log(brewery);
+        var breweryGeneral = brewery.response.venues; 
+        console.log(breweryGeneral);
+        breweryGeneral.forEach(function(bGData){
+        //     var $bDescription = bData.brewery.description;
+            var $bRealName = bGData.name;
+            var $webSite = bGData.url;
+            var $location = bGData.location.address;
+            var $twitter = bGData.contact.twitter;
+            var $phone = bGData.contact.formattedPhone;
+            console.log($bRealName, $webSite, $location, $twitter,$phone);
+        });
+
 	})
 }
 
