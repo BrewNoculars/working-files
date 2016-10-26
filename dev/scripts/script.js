@@ -50,3 +50,4 @@ breweriesNearBy.getInfo = function (latitude, longitude) {
 		});
 	})
 }
+
