@@ -25,23 +25,12 @@ brewNoculars.getInfo = function (userLocation) {
 		var brewerySpecifics = bInfo.data;
 		// console.log(brewerySpecifics);
 		brewerySpecifics.forEach(function(bData){
-			// var $bImages = bData.brewery.images.mediumSquare; //some breweries do not have images, so if erroring to undefined, then we need to code it to the image placeholder path
-			brewNoculars.handlebars(bData)
-			// var $bName = bData.brewery.name;
-			// var $bEstablished = bData.brewery.established;
-			// var $bOrganic = bData.brewery.isOrganic;
-			// var $bDescription = bData.brewery.description;
-		// console.log($bDescription,$bName,$bOrganic,$bImages,$bEstablished);
+			brewNoculars.handlebars(bData);
 
-		 var breweriesLat = brewerySpecifics.forEach(function(bGData){
-				var bLocationLat = bGData.location.lat;
-		 });
+			var breweriesLat = bData.latitude;
+			var breweriesLng = bData.longitude;
 
-		 var breweriesLng = brewerySpecifics.forEach(function(bGData){
-				var bLocationLng = bGData.location.lng;
-		 });
-
-		 var breweryMarker = new google.maps.Marker({
+			var breweryMarker = new google.maps.Marker({
 				position: {
 					lat:parseInt(breweriesLat,7),
 					lng:parseInt(breweriesLng,7),
@@ -49,12 +38,12 @@ brewNoculars.getInfo = function (userLocation) {
 				map: brewNoculars.map,
 				title: 'Brewery here!',
 				icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
-		 });
+			});
 
-		 console.log(breweryMarker);
-		 brewNoculars.mapMarkers.push(breweryMarker);
-		 brewNoculars.mapBounds.extend(breweryMarker.position);
-
+			console.log(brewNoculars.mapMarkers);
+			brewNoculars.mapMarkers.push(breweryMarker);
+			brewNoculars.mapBounds.extend(breweryMarker.position);
+			// console.log(brewNoculars.mapMarkers);
 		});
 	})
 }
@@ -70,11 +59,10 @@ brewNoculars.handlebars = function(breweryGeneral){
 	$('footer').append(renderedTemplate);
 };
 
+
 //GeoLocation API starts Here!!---------->
-//API key: AIzaSyCW8tHjXmHvzEH5qsjFzSH4NN7PVfumqu0
 // user enters site, site calculates users location
 brewNoculars.getLocation = function() {
-
 	// Check to see if the browser supports the GeoLocation API.
 	if ("geolocation" in navigator) {
 		// Get the location
@@ -86,14 +74,15 @@ brewNoculars.getLocation = function() {
 				lat: lat,
 				lon: lon
 			};
-
 			// // Show the map
 			brewNoculars.showMap(lat, lon);
+			brewNoculars.getInfo(brewNoculars.location);
+
 		});
 
 	} else {
 		// Print out a message to the user.
-		$('.intro').text('Your browser does not support GeoLocation. Use the search below');
+		$('.intro').text('Your browser does not support GeoLocation. Please use the search below');
 	}
 
 }
@@ -101,7 +90,6 @@ brewNoculars.getLocation = function() {
 // Search field Options-------------->
 
 brewNoculars.getSearchResults = function(search) {
-  // console.log("brewNoculars.mapMarkers", brewNoculars.mapMarkers);
   $.ajax({
     url: 'https://proxy.hackeryou.com',
     method: 'GET',
@@ -130,8 +118,6 @@ brewNoculars.getSearchResults = function(search) {
       brewNoculars.mapBounds = new google.maps.LatLngBounds();
 
 
-
-
     // Add a Marker to the Map with Search Results
     var marker = new google.maps.Marker({
         position: new google.maps.LatLng(addressLat, addressLon),
@@ -145,7 +131,6 @@ brewNoculars.getSearchResults = function(search) {
     brewNoculars.mapMarkers.push(marker);
     brewNoculars.mapBounds.extend(marker.position);
     brewNoculars.map.setCenter(marker.getPosition());
-
 
     brewNoculars.getInfo(brewNoculars.location);
   })
@@ -169,7 +154,6 @@ brewNoculars.showMap = function(lat, lon) {
 			// Create a LatLng object with the GPS coordinates.
 		 var myLatLng = new google.maps.LatLng(lat, lon);
 		 brewNoculars.mapBounds = new google.maps.LatLngBounds();
-		 
 
 			// Create the Map Options
 		  var mapOptions = {
@@ -189,20 +173,6 @@ brewNoculars.showMap = function(lat, lon) {
 		      animation: google.maps.Animation.DROP,
 		      icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
 		  });
-
-		 //  var breweryMarker = new google.maps.Marker({
-		 //  		position: ,
-		 //  		map: brewNoculars.map,
-		 //  		title: 'Brewery here!',
-		 //  		animation: google.maps.Animation.DROP,
-		 //  		icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
-			// });
-
-			//Adding all the Location info to the Map
-		  brewNoculars.mapMarkers.push(marker);
-		  brewNoculars.mapBounds.extend(marker.position);
-
-// console.log("myLatLng ", myLatLng);
 
 }
 
