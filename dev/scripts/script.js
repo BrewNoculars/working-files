@@ -11,7 +11,6 @@ brewNoculars.getBreweries = function(userLocation) {
 		method: 'GET',
 		dataType:'json',
 		data: {
-			// near:'Toronto, ON', // userlocation should be here, passed in from GeoLocation app
 			ll: userLocation.lat + ',' + userLocation.lon,
 			query:'brewery',
 			limit:50,
@@ -47,13 +46,14 @@ brewNoculars.getInfo = function (userLocation) {
 		data:{
 			reqUrl: 'http://api.brewerydb.com/v2/search/geo/point',
 			params: {
-				lat: userLocation.lat,
-				lng: userLocation.lon,
+				lat: parseInt(userLocation.lat,6),
+				lng: parseInt(userLocation.lon,6),
 				radius:5,
 				key: '3dae318cdfd5f407dccf3b5974924616'
 			}
 		}
 	}).then(function(bInfo){
+		console.log(bInfo);
 		var brewerySpecifics = bInfo.results;
 		console.log(brewerySpecifics);
 		brewerySpecifics.forEach(function(bData){
@@ -67,21 +67,18 @@ brewNoculars.getInfo = function (userLocation) {
 	})
 }
 
-//GeoLocation API starts Here!!--------------------------------------------------------------->
-
-//API key: AIzaSyCW8tHjXmHvzEH5qsjFzSH4NN7PVfumqu0
-
+// Handlebars function
 brewNoculars.handlebars = function(breweryGeneral){
-	console.log("passed data", breweryGeneral);
+	// console.log("passed data", breweryGeneral);
 	 var $bRealName = breweryGeneral.name;
 	var myTemplate = $('#myTemplate').html();
 	var template = Handlebars.compile(myTemplate);
 	var renderedTemplate = template(breweryGeneral);
-	console.log('this is brewery', template)
+	// console.log('this is brewery', template)
 	$('footer').append(renderedTemplate);
 };
 
-//GeoLocation API starts Here!!--------------------------------------------------------------->
+//GeoLocation API starts Here!!---------->
 //API key: AIzaSyCW8tHjXmHvzEH5qsjFzSH4NN7PVfumqu0
 
 // user enters site, site calculates users location
@@ -92,15 +89,13 @@ brewNoculars.getLocation = function() {
 	if ("geolocation" in navigator) {
 		// Get the location
 		navigator.geolocation.getCurrentPosition(function(position) {
-			console.log("position", position)
+			// console.log("position", position)
 			var lat = position.coords.latitude;
 			var lon = position.coords.longitude;
 			brewNoculars.location = {
 				lat: lat,
 				lon: lon
 			};
-			// console.log("lat" + lat);
-			// console.log("lon" + lon);
 
 			// // Show the map
 			brewNoculars.showMap(lat, lon);
@@ -113,10 +108,10 @@ brewNoculars.getLocation = function() {
 
 }
 
-// Search field Options----------------------------------------------------------------------->
+// Search field Options-------------->
 
 brewNoculars.getSearchResults = function(search) {
-  console.log("brewNoculars.mapMarkers", brewNoculars.mapMarkers);
+  // console.log("brewNoculars.mapMarkers", brewNoculars.mapMarkers);
   $.ajax({
     url: 'https://proxy.hackeryou.com',
     method: 'GET',
@@ -130,7 +125,7 @@ brewNoculars.getSearchResults = function(search) {
     }
   }).then(function(searchRes){
 
-    console.log("search results", searchRes);
+    // console.log("search results", searchRes);
 
     var addressLat = searchRes.results[0].geometry.location.lat;
     var addressLon = searchRes.results[0].geometry.location.lng;
@@ -154,6 +149,15 @@ brewNoculars.getSearchResults = function(search) {
         title: "You're Here!",
         icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
     });
+
+    // var breweryMarker = new google.maps.Marker({
+    // 		position:new google.maps.LatLng(,),
+    // 		map: brewNoculars.map,
+    // 		title: 'Brewery here!',
+    // 		animation: google.maps.Animation.DROP,
+    // 		icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+    // });
+
     brewNoculars.mapMarkers.push(marker);
     brewNoculars.mapBounds.extend(marker.position);
     brewNoculars.map.setCenter(marker.getPosition());
@@ -169,17 +173,16 @@ brewNoculars.getAddress = function() {
   $('form').on('submit', function(e){
     e.preventDefault();
     var searchValue = $('#user-input').val() 
-    // var toronto = searchValue + " Toronto, Ontario";
-    console.log("searchValue:" + searchValue);
+    // console.log("searchValue:" + searchValue);
 
     brewNoculars.getSearchResults(searchValue);
   });
 }
 
-	//End of Search Area---------------------------------------------------------------------------->
+	//End of Search Area-------->
 
 
-	// Show the user's position (Geolocation) on a Map.--------------------------------------------->
+	// Show the user's position (Geolocation) on a Map.--------------->
  brewNoculars.showMap = function(lat, lon) {
 			// Create a LatLng object with the GPS coordinates.
 		 var myLatLng = new google.maps.LatLng(lat, lon);
@@ -205,17 +208,23 @@ brewNoculars.getAddress = function() {
 		      icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
 		  });
 
+		 //  var breweryMarker = new google.maps.Marker({
+		 //  		position: ,
+		 //  		map: brewNoculars.map,
+		 //  		title: 'Brewery here!',
+		 //  		animation: google.maps.Animation.DROP,
+		 //  		icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+			// });
+
 			//Adding all the Location info to the Map
 		  brewNoculars.mapMarkers.push(marker);
 		  brewNoculars.mapBounds.extend(marker.position);
 
-console.log("myLatLng ", myLatLng);
+// console.log("myLatLng ", myLatLng);
 
 }
 
-// console.log("MAP " + brewNoculars.mapMarkers);
 	//When the Page Loads start the App
-	//geolocator
 brewNoculars.init = function() {
   brewNoculars.getLocation();
   brewNoculars.getAddress();
@@ -223,9 +232,5 @@ brewNoculars.init = function() {
 
 
 $(function() {
-	//brewNoculars.getBreweries();
   brewNoculars.init();
 })
-
-// address search needs have City included, or add in auto complete for user completing City (with Google Places, etc). There is a JS library. Ask user to use City!
-// map needs to plot the breweries too
