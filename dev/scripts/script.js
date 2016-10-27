@@ -75,6 +75,7 @@ brewNoculars.getLocation = function() {
 			};
 
 			brewNoculars.showMap(lat, lon);
+			brewNoculars.getInfo(brewNoculars.location);
 		});
 
 	} else {
@@ -140,7 +141,7 @@ brewNoculars.showMap = function(lat, lon) {
 			// Create a LatLng object with the GPS coordinates.
 		 var myLatLng = new google.maps.LatLng(lat, lon);
 		 brewNoculars.mapBounds = new google.maps.LatLngBounds();
-		 
+
 			// Create the Map Options
 		  var mapOptions = {
 		    zoom: 15,
@@ -160,20 +161,8 @@ brewNoculars.showMap = function(lat, lon) {
 		      icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
 		  });
 
-		 //  var breweryMarker = new google.maps.Marker({
-		 //  		position: ,
-		 //  		map: brewNoculars.map,
-		 //  		title: 'Brewery here!',
-		 //  		animation: google.maps.Animation.DROP,
-		 //  		icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
-			// });
-
-			//Adding all the Location info to the Map
 		  brewNoculars.mapMarkers.push(marker);
 		  brewNoculars.mapBounds.extend(marker.position);
-
-// console.log("myLatLng ", myLatLng);
-
 }
 
 	//When the Page Loads start the App
