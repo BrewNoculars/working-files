@@ -31,10 +31,7 @@ brewNoculars.getInfo = function (userLocation) {
 			var breweriesLng = bData.longitude;
 
 			var breweryMarker = new google.maps.Marker({
-				position: {
-					lat:parseInt(breweriesLat,7),
-					lng:parseInt(breweriesLng,7),
-				},
+				position:new google.maps.LatLng(breweriesLat,breweriesLng),
 				map: brewNoculars.map,
 				title: 'Brewery here!',
 				icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
@@ -50,7 +47,7 @@ brewNoculars.getInfo = function (userLocation) {
 
 // Handlebars function
 brewNoculars.handlebars = function(brewerySpecifics){
-	console.log('this is brewery general', brewerySpecifics);
+	// console.log('this is brewery general', brewerySpecifics);
 	var myTemplate = $('#myTemplate').html();
 	var template = Handlebars.compile(myTemplate);
 	var renderedTemplate = template(brewerySpecifics);
@@ -171,6 +168,11 @@ brewNoculars.showMap = function(lat, lon) {
 		      animation: google.maps.Animation.DROP,
 		      icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
 		  });
+
+
+		// check if this does anything?
+		brewNoculars.mapMarkers.push(marker);
+		brewNoculars.mapBounds.extend(marker.position);
 
 }
 
