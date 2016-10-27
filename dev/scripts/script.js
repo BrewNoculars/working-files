@@ -11,7 +11,8 @@ brewNoculars.getBreweries = function(userLocation) {
 		method: 'GET',
 		dataType:'json',
 		data: {
-			near:'Toronto, ON', // userlocation should be here, passed in from GeoLocation app
+			// near:'Toronto, ON', // userlocation should be here, passed in from GeoLocation app
+			ll: userLocation.lat + ',' + userLocation.lon,
 			query:'brewery',
 			limit:50,
 			categoryID:'50327c8591d4c4b30a586d5d'
@@ -38,8 +39,7 @@ brewNoculars.getBreweries = function(userLocation) {
 }
 
 // Brewery DB API starts here!
-
-brewNoculars.getInfo = function (latitude, longitude) {
+brewNoculars.getInfo = function (userLocation) {
 	$.ajax ({
 		url: 'http://proxy.hackeryou.com',
 		method: 'GET',
@@ -47,17 +47,16 @@ brewNoculars.getInfo = function (latitude, longitude) {
 		data:{
 			reqUrl: 'http://api.brewerydb.com/v2/search/geo/point',
 			params: {
-				lat:'43.6532',
-				lng:'-79.3832',
+				lat: userLocation.lat,
+				lng: userLocation.lon,
 				radius:5,
 				key: '3dae318cdfd5f407dccf3b5974924616'
 			}
 		}
 	}).then(function(bInfo){
-		var brewerySpecifics = bInfo.data;
+		var brewerySpecifics = bInfo.results;
 		console.log(brewerySpecifics);
 		brewerySpecifics.forEach(function(bData){
-
 			var $bImages = bData.brewery.images.medium; //some breweries do not have images, so if erroring to undefined, then we need to code it to the image placeholder path
 			var $bName = bData.brewery.name;
 			var $bEstablished = bData.brewery.established;
@@ -127,12 +126,11 @@ brewNoculars.getSearchResults = function(search) {
       params: {
         key: 'AIzaSyCW8tHjXmHvzEH5qsjFzSH4NN7PVfumqu0',
         address: search
-        
       }
     }
   }).then(function(searchRes){
 
-    console.log("search results", search);
+    console.log("search results", searchRes);
 
     var addressLat = searchRes.results[0].geometry.location.lat;
     var addressLon = searchRes.results[0].geometry.location.lng;
@@ -161,8 +159,8 @@ brewNoculars.getSearchResults = function(search) {
     brewNoculars.map.setCenter(marker.getPosition());
 
 
-    brewNoculars.getPlace();
-
+    brewNoculars.getBreweries(brewNoculars.location);
+    brewNoculars.getInfo(brewNoculars.location);
 
   })
 }
@@ -174,7 +172,7 @@ brewNoculars.getAddress = function() {
     // var toronto = searchValue + " Toronto, Ontario";
     console.log("searchValue:" + searchValue);
 
-    brewNoculars.getSearchResults(toronto);
+    brewNoculars.getSearchResults(searchValue);
   });
 }
 
@@ -224,39 +222,10 @@ brewNoculars.init = function() {
 };
 
 
-
 $(function() {
-	brewNoculars.getBreweries();
-  // brewNoculars.init();
+	//brewNoculars.getBreweries();
+  brewNoculars.init();
 })
 
-
-//FourSquare API Starts here!
-brewNoculars.getBreweries = function (userLocation) {
-	$.ajax ({
-		url:'https://api.foursquare.com/v2/venues/search?client_id=XC45QHEBXODZWSFXRYRBKJCGDNOXYMLR14155RH1SXZ0CPIC&client_secret=BVUIPRJESP1EX4L0GLBO4VLDV0EEIYABKBS0KJOTUFCWV143&v=20160730',
-		method: 'GET',
-		dataType:'json',
-		data: {
-			near:'Toronto, ON', // userlocation should be here, passed in from GeoLocation app
-			query:'brewery',
-			limit:50,
-			categoryID:'50327c8591d4c4b30a586d5d'
-		}
-	}).then (function(brewery){
-		console.log(brewery);
-        var breweryGeneral = brewery.response.venues; 
-        // console.log(breweryGeneral);
-        breweryGeneral.forEach(function(bGData){
-            // var $bDescription = bData.brewery.description;
-            brewNoculars.handlebars(bGData)
-            // var $bRealName = bGData.name;
-            // var $webSite = bGData.url;
-            // var $location = bGData.location.address;
-            // var $twitter = bGData.contact.twitter;
-            // var $phone = bGData.contact.formattedPhone;
-            // console.log($bRealName, $webSite, $location, $twitter,$phone);
-        });
-
-	})
-}
+// address search needs have City included, or add in auto complete for user completing City (with Google Places, etc). There is a JS library. Ask user to use City!
+// map needs to plot the breweries too
