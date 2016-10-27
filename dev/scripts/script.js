@@ -21,12 +21,12 @@ brewNoculars.getInfo = function (userLocation) {
 			}
 		}
 	}).then(function(bInfo){
-		// console.log(bInfo);
+		console.log('this is binfo', bInfo);
 		var brewerySpecifics = bInfo.data;
 		// console.log(brewerySpecifics);
 		brewerySpecifics.forEach(function(bData){
 			// var $bImages = bData.brewery.images.mediumSquare; //some breweries do not have images, so if erroring to undefined, then we need to code it to the image placeholder path
-			brewNoculars.handlebars(bData)
+			brewNoculars.handlebars(bData);
 			// var $bName = bData.brewery.name;
 			// var $bEstablished = bData.brewery.established;
 			// var $bOrganic = bData.brewery.isOrganic;
@@ -34,11 +34,11 @@ brewNoculars.getInfo = function (userLocation) {
 		// console.log($bDescription,$bName,$bOrganic,$bImages,$bEstablished);
 
 		 var breweriesLat = brewerySpecifics.forEach(function(bGData){
-				var bLocationLat = bGData.location.lat;
+				var bLocationLat = bGData.latitude;
 		 });
 
 		 var breweriesLng = brewerySpecifics.forEach(function(bGData){
-				var bLocationLng = bGData.location.lng;
+				var bLocationLng = bGData.longitude;
 		 });
 
 		 var breweryMarker = new google.maps.Marker({
@@ -60,15 +60,14 @@ brewNoculars.getInfo = function (userLocation) {
 }
 
 // Handlebars function
-brewNoculars.handlebars = function(breweryGeneral){
-	// console.log("passed data", breweryGeneral);
-	 var $bRealName = breweryGeneral.name;
+brewNoculars.handlebars = function(brewerySpecifics){
+	console.log('this is brewery general', brewerySpecifics);
 	var myTemplate = $('#myTemplate').html();
 	var template = Handlebars.compile(myTemplate);
-	var renderedTemplate = template(breweryGeneral);
-	// console.log('this is brewery', template)
+	var renderedTemplate = template(brewerySpecifics);
 	$('footer').append(renderedTemplate);
 };
+
 
 //GeoLocation API starts Here!!---------->
 //API key: AIzaSyCW8tHjXmHvzEH5qsjFzSH4NN7PVfumqu0

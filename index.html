@@ -9,11 +9,14 @@
 	<script id="myTemplate" type="x-handlebars-template">
 		<div class="resultsCards">
 			<div>
-			<h1>NAME: {{name}}</h1>
-			<h2>WEBSITE: {{url}}</h2>
-			<h2>LOCATION: {{location.address}}</h2>
-			<h2>Twitter: {{contact.twitter}}</h2>
-			<h2>Phone: {{contact.formattedPhone}}</h2>
+			{{#if brewery.name}}<h1>NAME: {{brewery.name}}</h1>{{/if}}
+			{{#if brewery.images.squareMedium}}<img src="{{brewery.images.squareMedium}}" alt="" />{{/if}}
+			{{#if phone}} <h2>phone: {{phone}}</h2>{{/if}}
+			{{#if brewery.website}} <a href="brewery.website">{{brewery.website}}</a>{{/if}}
+			{{#if streetAddress}}<h2>address: {{streetAddress}}</h2>{{/if}}
+			{{#if brewery.isOrganic}}<h2>Organic {{brewery.isOrganic}}</h2>{{/if}}
+			{{#if brewery.description}}<p>{{brewery.description}}</p>{{/if}}
+			
 			</div>
 		</div>
 	</script>
