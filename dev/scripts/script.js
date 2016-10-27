@@ -57,7 +57,7 @@ brewNoculars.getInfo = function (userLocation) {
 		var brewerySpecifics = bInfo.results;
 		console.log(brewerySpecifics);
 		brewerySpecifics.forEach(function(bData){
-			var $bImages = bData.brewery.images.medium; //some breweries do not have images, so if erroring to undefined, then we need to code it to the image placeholder path
+			var $bImages = bData.brewery.images.mediumSquare; //some breweries do not have images, so if erroring to undefined, then we need to code it to the image placeholder path
 			var $bName = bData.brewery.name;
 			var $bEstablished = bData.brewery.established;
 			var $bOrganic = bData.brewery.isOrganic;
@@ -99,16 +99,16 @@ brewNoculars.getLocation = function() {
 				lat: lat,
 				lon: lon
 			};
-			// brewNoculars.getPlace();
-			console.log("lat" + lat);
-			console.log("lon" + lon);
+			// console.log("lat" + lat);
+			// console.log("lon" + lon);
 
 			// // Show the map
 			brewNoculars.showMap(lat, lon);
 		});
+
 	} else {
 		// Print out a message to the user.
-		document.write('Your browser does not support GeoLocation :(');
+		$('.intro').text('Your browser does not support GeoLocation. Use the search below');
 	}
 
 }
