@@ -23,37 +23,32 @@ brewNoculars.getInfo = function (userLocation) {
 	}).then(function(bInfo){
 		console.log('this is binfo', bInfo);
 		var brewerySpecifics = bInfo.data;
-			brewerySpecifics.forEach(function(bData){
-				brewNoculars.handlebars(bData);
-				var breweriesLat = brewerySpecifics.forEach(function(bGData){
-				var bLocationLat = bGData.latitude;
-		 	});
 
-		var breweriesLng = brewerySpecifics.forEach(function(bGData){
-				var bLocationLng = bGData.longitude;
-		});
+		// console.log(brewerySpecifics);
+		brewerySpecifics.forEach(function(bData){
+			brewNoculars.handlebars(bData);
 
-		var breweryMarker = new google.maps.Marker({
-			position: {
-				lat:parseInt(breweriesLat,7),
-				lng:parseInt(breweriesLng,7),
-			},
-			map: brewNoculars.map,
-			title: 'Brewery here!',
-			icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
-		 });
+			var breweriesLat = bData.latitude;
+			var breweriesLng = bData.longitude;
 
-		 console.log(breweryMarker);
-		 brewNoculars.mapMarkers.push(breweryMarker);
-		 brewNoculars.mapBounds.extend(breweryMarker.position);
+			var breweryMarker = new google.maps.Marker({
+				position:new google.maps.LatLng(breweriesLat,breweriesLng),
+				map: brewNoculars.map,
+				title: 'Brewery here!',
+				icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+			});
 
+			console.log(brewNoculars.mapMarkers);
+			brewNoculars.mapMarkers.push(breweryMarker);
+			brewNoculars.mapBounds.extend(breweryMarker.position);
+			// console.log(brewNoculars.mapMarkers);
 		});
 	})
 }
 
 brewNoculars.handlebars = function(brewerySpecifics){
 
-	console.log('this is brewery general', brewerySpecifics);
+	// console.log('this is brewery general', brewerySpecifics);
 	var myTemplate = $('#myTemplate').html();
 	var template = Handlebars.compile(myTemplate);
 	var renderedTemplate = template(brewerySpecifics);
@@ -161,8 +156,10 @@ brewNoculars.showMap = function(lat, lon) {
 		      icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
 		  });
 
-		  brewNoculars.mapMarkers.push(marker);
-		  brewNoculars.mapBounds.extend(marker.position);
+		// check if this does anything?
+		brewNoculars.mapMarkers.push(marker);
+		brewNoculars.mapBounds.extend(marker.position);
+
 }
 
 	//When the Page Loads start the App
