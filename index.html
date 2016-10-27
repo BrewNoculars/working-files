@@ -7,7 +7,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato|Vast+Shadow" rel="stylesheet">
 	<link rel="stylesheet" href="public/styles/style.css">
 	<script id="myTemplate" type="x-handlebars-template">
-		<div class="resultsCards">
+		<div class="resultsCards wrapper">
 			<div>
 			{{#if brewery.name}}<h1>NAME: {{brewery.name}}</h1>{{/if}}
 			{{#if brewery.images.squareMedium}}<img src="{{brewery.images.squareMedium}}" alt="" />{{/if}}
@@ -40,7 +40,7 @@
 				<p class="intro">Allow your browser to geolocate you</p>
 				<p>Or</p>
 				<label for="user-input">Search an address</label>
-				<input id="user-input" class="controls" type="text" value="Search an Address">
+				<input id="user-input" class="controls" type="text" placeholder="Search an Address">
 				<input id="selector" type="submit" value="Find your brew">
 			</form>
 
