@@ -23,6 +23,7 @@ brewNoculars.getInfo = function (userLocation) {
 	}).then(function(bInfo){
 		console.log('this is binfo', bInfo);
 		var brewerySpecifics = bInfo.data;
+
 		// console.log(brewerySpecifics);
 		brewerySpecifics.forEach(function(bData){
 			brewNoculars.handlebars(bData);
@@ -45,8 +46,8 @@ brewNoculars.getInfo = function (userLocation) {
 	})
 }
 
-// Handlebars function
 brewNoculars.handlebars = function(brewerySpecifics){
+
 	// console.log('this is brewery general', brewerySpecifics);
 	var myTemplate = $('#myTemplate').html();
 	var template = Handlebars.compile(myTemplate);
@@ -55,8 +56,6 @@ brewNoculars.handlebars = function(brewerySpecifics){
 };
 
 
-//GeoLocation API starts Here!!---------->
-// user enters site, site calculates users location
 brewNoculars.getLocation = function() {
 	// Check to see if the browser supports the GeoLocation API.
 	if ("geolocation" in navigator) {
@@ -69,22 +68,19 @@ brewNoculars.getLocation = function() {
 				lat: lat,
 				lon: lon
 			};
-			// // Show the map
+
 			brewNoculars.showMap(lat, lon);
 			brewNoculars.getInfo(brewNoculars.location);
-
 		});
 
 	} else {
 		// Print out a message to the user.
-		$('.intro').text('Your browser does not support GeoLocation. Please use the search below');
+		$('.intro').text('Your browser does not support GeoLocation. Use the search below');
 	}
-
 }
 
-// Search field Options-------------->
-
 brewNoculars.getSearchResults = function(search) {
+  // console.log("brewNoculars.mapMarkers", brewNoculars.mapMarkers);
   $.ajax({
     url: 'https://proxy.hackeryou.com',
     method: 'GET',
@@ -99,7 +95,6 @@ brewNoculars.getSearchResults = function(search) {
   }).then(function(searchRes){
 
     // console.log("search results", searchRes);
-
     var addressLat = searchRes.results[0].geometry.location.lat;
     var addressLon = searchRes.results[0].geometry.location.lng;
     brewNoculars.location = {
@@ -112,7 +107,6 @@ brewNoculars.getSearchResults = function(search) {
       delete brewNoculars.mapBounds;
       brewNoculars.mapBounds = new google.maps.LatLngBounds();
 
-
     // Add a Marker to the Map with Search Results
     var marker = new google.maps.Marker({
         position: new google.maps.LatLng(addressLat, addressLon),
@@ -122,11 +116,9 @@ brewNoculars.getSearchResults = function(search) {
     });
 
     // console.log(marker);
-
     brewNoculars.mapMarkers.push(marker);
     brewNoculars.mapBounds.extend(marker.position);
     brewNoculars.map.setCenter(marker.getPosition());
-
     brewNoculars.getInfo(brewNoculars.location);
   })
 }
@@ -136,15 +128,10 @@ brewNoculars.getAddress = function() {
     e.preventDefault();
     var searchValue = $('#user-input').val() 
     // console.log("searchValue:" + searchValue);
-
     brewNoculars.getSearchResults(searchValue);
   });
 }
 
-	//End of Search Area-------->
-
-
-	// Show the user's position (Geolocation) on a Map.--------------->
 brewNoculars.showMap = function(lat, lon) {
 			// Create a LatLng object with the GPS coordinates.
 		 var myLatLng = new google.maps.LatLng(lat, lon);
@@ -168,7 +155,6 @@ brewNoculars.showMap = function(lat, lon) {
 		      animation: google.maps.Animation.DROP,
 		      icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
 		  });
-
 
 		// check if this does anything?
 		brewNoculars.mapMarkers.push(marker);
