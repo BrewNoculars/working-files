@@ -21,7 +21,7 @@ brewNoculars.getInfo = function (userLocation) {
 			}
 		}
 	}).then(function(bInfo){
-		// console.log(bInfo);
+		console.log('this is binfo', bInfo);
 		var brewerySpecifics = bInfo.data;
 		// console.log(brewerySpecifics);
 		brewerySpecifics.forEach(function(bData){
@@ -49,13 +49,11 @@ brewNoculars.getInfo = function (userLocation) {
 }
 
 // Handlebars function
-brewNoculars.handlebars = function(breweryGeneral){
-	// console.log("passed data", breweryGeneral);
-	 var $bRealName = breweryGeneral.name;
+brewNoculars.handlebars = function(brewerySpecifics){
+	console.log('this is brewery general', brewerySpecifics);
 	var myTemplate = $('#myTemplate').html();
 	var template = Handlebars.compile(myTemplate);
-	var renderedTemplate = template(breweryGeneral);
-	// console.log('this is brewery', template)
+	var renderedTemplate = template(brewerySpecifics);
 	$('footer').append(renderedTemplate);
 };
 
