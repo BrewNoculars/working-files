@@ -10,7 +10,9 @@
 		<div class="resultsCards wrapperResults">
 			<div class="individualBrew">
 				{{#if brewery.name}}<h2>{{brewery.name}}</h2>{{/if}}
-				{{#if brewery.images.squareMedium}}<img src="{{brewery.images.squareMedium}}" alt="" />{{/if}}
+				{{#if brewery.images.squareMedium}}<img src="{{brewery.images.squareMedium}}" alt="logo for the brewery" />
+					{{else}}<img src="images/brewery-alt2.jpg" alt="pictures of beer on a bar">
+					{{/if}}
 				{{#if phone}} <h3>{{phone}}</h3>{{/if}}
 				{{#if streetAddress}}<h3>{{streetAddress}}</h3>{{/if}}
 				<div>
@@ -25,7 +27,7 @@
 	<title>BrewNoculars</title>
 </head>
 <body>
-
+	
 	<header>
 		<section class="topBar" id="topBar">
 			<h4>BrewNoculars</h4>
