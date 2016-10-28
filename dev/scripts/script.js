@@ -40,21 +40,31 @@ brewNoculars.getInfo = function (userLocation) {
 			var breweriesLng = bData.longitude;
 			var breweryName = bData.brewery.name;
 
+			//Define Business name for Map Info Card
+    		var infowindow = new google.maps.InfoWindow({
+    			content: bData.brewery.name
+  			});
+
 			var breweryMarker = new google.maps.Marker({
 				position:new google.maps.LatLng(breweriesLat,breweriesLng),
 				map: brewNoculars.map,
-				title: 'Brewery here!',
-				icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+				title: breweryName,
+				icon: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
 			});
 
 			// console.log(brewNoculars.mapMarkers);
 			brewNoculars.mapMarkers.push(breweryMarker);
 			brewNoculars.mapBounds.extend(breweryMarker.position);
 			// console.log(brewNoculars.mapMarkers);
+
+			breweryMarker.addListener('click', function(){
+				infowindow.open(brewNoculars.map, breweryMarker);
+			});
+			brewNoculars.map.fitBounds(brewNoculars.mapBounds);
 		});
+		console.log("results ", bInfo.data);
 	})
 }
-console.log("results ", bInfo);
 
 brewNoculars.handlebars = function(brewerySpecifics){
 	// console.log('this is brewery general', brewerySpecifics);
