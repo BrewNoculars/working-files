@@ -7,14 +7,14 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato|Vast+Shadow" rel="stylesheet">
 	<link rel="stylesheet" href="public/styles/style.css">
 	<script id="myTemplate" type="x-handlebars-template">
-		<div class="resultsCards wrapper">
+		<div class="resultsCards wrapperResults">
 			<div>
-			{{#if brewery.name}}<h1>NAME: {{brewery.name}}</h1>{{/if}}
+			{{#if brewery.name}}<h2>{{brewery.name}}</h2>{{/if}}
 			{{#if brewery.images.squareMedium}}<img src="{{brewery.images.squareMedium}}" alt="" />{{/if}}
-			{{#if phone}} <h2>phone: {{phone}}</h2>{{/if}}
+			{{#if phone}} <h3>{{phone}}</h3>{{/if}}
 			{{#if brewery.website}} <a href="brewery.website">{{brewery.website}}</a>{{/if}}
-			{{#if streetAddress}}<h2>address: {{streetAddress}}</h2>{{/if}}
-			{{#if brewery.isOrganic}}<h2>Organic {{brewery.isOrganic}}</h2>{{/if}}
+			{{#if streetAddress}}<h3>{{streetAddress}}</h3>{{/if}}
+			{{#if brewery.isOrganic}}<h3>Organic {{brewery.isOrganic}}</h3>{{/if}}
 			{{#if brewery.description}}<p>{{brewery.description}}</p>{{/if}}
 			
 			</div>
@@ -25,34 +25,32 @@
 <body>
 
 	<header>
-		<section class="top-logo"> <!-- something to hold the top logo + return to top of page -->
-			<img src="" alt="">
+		<section class="topBar" id="topBar">
+			<h4>BrewNoculars</h4>
+			<p class="backToTop"><a href="#topBar">Back to Search</a></p>
 		</section>
 
-		<section class="header-search"> <!-- main search -->
-			<img src="" alt=""> <!-- maybe the logo goes here -->
+		<section class="header-search wrapperHeader"> <!-- main search -->
 			<h1>BrewNoculars</h1>
 			<h2>Find the closest brewery to you!</h2>
-
+			<p class="intro">Allow your browser to geolocate you</p>
+			<button>Go to map</button>
+			<p>Or</p>
 
 				<!-- input type for geolocation here -->
 			<form action="">
-				<p class="intro">Allow your browser to geolocate you</p>
-				<p>Or</p>
 				<label for="user-input">Search an address</label>
-				<input id="user-input" class="controls" type="text" placeholder="Search an address">
+				<input id="user-input" class="controls" type="text" placeholder="Address and City">
 				<input id="selector" type="submit" value="Find your brew">
 			</form>
 
 		</section>
 	</header>
 
-	<section class="results">
+	<section class="results wrapperResults">
 		<div id="map">
 			
 		</div>
-
-		<!-- handlebars/javascript HTML logging for results here -->
 	</section>
 
 	<footer>
