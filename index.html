@@ -7,14 +7,14 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato|Vast+Shadow" rel="stylesheet">
 	<link rel="stylesheet" href="public/styles/style.css">
 	<script id="myTemplate" type="x-handlebars-template">
-		<div class="resultsCards wrapper">
+		<div class="resultsCards wrapperResults">
 			<div>
-			{{#if brewery.name}}<h1>NAME: {{brewery.name}}</h1>{{/if}}
+			{{#if brewery.name}}<h2>{{brewery.name}}</h2>{{/if}}
 			{{#if brewery.images.squareMedium}}<img src="{{brewery.images.squareMedium}}" alt="" />{{/if}}
-			{{#if phone}} <h2>phone: {{phone}}</h2>{{/if}}
+			{{#if phone}} <h3>{{phone}}</h3>{{/if}}
 			{{#if brewery.website}} <a href="brewery.website">{{brewery.website}}</a>{{/if}}
-			{{#if streetAddress}}<h2>address: {{streetAddress}}</h2>{{/if}}
-			{{#if brewery.isOrganic}}<h2>Organic {{brewery.isOrganic}}</h2>{{/if}}
+			{{#if streetAddress}}<h3>{{streetAddress}}</h3>{{/if}}
+			{{#if brewery.isOrganic}}<h3>Organic {{brewery.isOrganic}}</h3>{{/if}}
 			{{#if brewery.description}}<p>{{brewery.description}}</p>{{/if}}
 			
 			</div>
@@ -25,34 +25,32 @@
 <body>
 
 	<header>
-		<section class="top-logo"> <!-- something to hold the top logo + return to top of page -->
-			<img src="" alt="">
+		<section class="topBar" id="topBar">
+			<h4>BrewNoculars</h4>
+			<p class="backToTop"><a href="#topBar">Back to Search</a></p>
 		</section>
 
-		<section class="header-search"> <!-- main search -->
-			<img src="" alt=""> <!-- maybe the logo goes here -->
-			<h1>BrewNoculars</h1>
+		<section class="header-search wrapperHeader"> <!-- main search -->
+			<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 445.08 142.75"><defs><style>.cls-1{font-size:45.62px;fill:#231f20;font-family:Vast Shadow;}</style></defs><title>BrewNoculars</title><text class="cls-1" transform="translate(25.58 121.01) rotate(-41.13)">B</text><text class="cls-1" transform="translate(57.94 93.27) rotate(-34.17)">r</text><text class="cls-1" transform="translate(81.35 77.12) rotate(-27.88)">e</text><text class="cls-1" transform="matrix(0.95, -0.31, 0.31, 0.95, 110.65, 60.33)">w</text><text class="cls-1" transform="matrix(0.99, -0.11, 0.11, 0.99, 164.83, 42.75)">N</text><text class="cls-1" transform="matrix(1, 0.06, -0.06, 1, 215.27, 37.97)">o</text><text class="cls-1" transform="translate(250.1 39.98) rotate(11.18)">c</text><text class="cls-1" transform="translate(283.94 46.52) rotate(19.22)">u</text><text class="cls-1" transform="translate(318.74 59.09) rotate(25.53)">l</text><text class="cls-1" transform="matrix(0.85, 0.53, -0.53, 0.85, 337.54, 67.48)">a</text><text class="cls-1" transform="translate(370.58 88.3) rotate(38.55)">r</text><text class="cls-1" transform="matrix(0.71, 0.7, -0.7, 0.71, 392.96, 105.89)">s</text></svg>
 			<h2>Find the closest brewery to you!</h2>
-
+			<p class="intro">Allow your browser to geolocate you</p>
+			<button>Go to map</button>
+			<p>Or</p>
 
 				<!-- input type for geolocation here -->
 			<form action="">
-				<p class="intro">Allow your browser to geolocate you</p>
-				<p>Or</p>
 				<label for="user-input">Search an address</label>
-				<input id="user-input" class="controls" type="text" placeholder="Search an address">
+				<input id="user-input" class="controls" type="text" placeholder="Address and City">
 				<input id="selector" type="submit" value="Find your brew">
 			</form>
 
 		</section>
 	</header>
 
-	<section class="results">
+	<section class="results wrapperResults">
 		<div id="map">
 			
 		</div>
-
-		<!-- handlebars/javascript HTML logging for results here -->
 	</section>
 
 	<footer>

@@ -16,7 +16,7 @@ brewNoculars.getInfo = function (userLocation) {
 			params: {
 				lat: userLocation.lat,
 				lng: userLocation.lon,
-				radius:25, //miles
+				radius:5, //miles
 				key: '3dae318cdfd5f407dccf3b5974924616'
 			}
 		}
@@ -141,7 +141,12 @@ brewNoculars.showMap = function(lat, lon) {
 		  var mapOptions = {
 		    zoom: 15,
 		    center: myLatLng,
-		    mapTypeId: google.maps.MapTypeId.ROADMAP
+		    mapTypeId: google.maps.MapTypeId.ROADMAP,
+		   	scrollwheel: false,
+		   	navigationControl: false,
+		   	mapTypeControl: false,
+		   	scaleControl: false
+		   	// draggable: false
 		  };
 
 			// Generate the Map
