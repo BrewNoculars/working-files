@@ -6,7 +6,6 @@ function removeMarkers(){
         brewNoculars.mapMarkers[i].setMap(null);
     }
 }
-// var myTemplate = $('#myTemplate').html();
 
 // brewNoculars.mapBounds = new google.maps.LatLngBounds();
 
@@ -31,11 +30,11 @@ brewNoculars.getInfo = function (userLocation) {
 		// console.log('this is binfo', bInfo);
 		var brewerySpecifics = bInfo.data;
 
+		$('.results').empty();
 		// console.log(brewerySpecifics);
 		brewerySpecifics.forEach(function(bData){
-			
+
 			brewNoculars.handlebars(bData);
-			// $('footer').empty();
 
 			var breweriesLat = bData.latitude;
 			var breweriesLng = bData.longitude;
@@ -47,7 +46,7 @@ brewNoculars.getInfo = function (userLocation) {
 				icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
 			});
 
-			console.log(brewNoculars.mapMarkers);
+			// console.log(brewNoculars.mapMarkers);
 			brewNoculars.mapMarkers.push(breweryMarker);
 			brewNoculars.mapBounds.extend(breweryMarker.position);
 			// console.log(brewNoculars.mapMarkers);
@@ -184,33 +183,24 @@ brewNoculars.showMap = function(lat, lon) {
 }
 //When the Page Loads start the App
 brewNoculars.init = function() {
- brewNoculars.getLocation();
- brewNoculars.getAddress();
- $('a').smoothScroll({
 
-     //add in an option like direction:'top'
- });
+  brewNoculars.getLocation();
+  brewNoculars.getAddress();
+  $('a').smoothScroll({
+  	//add in an option like direction:'top'
+  });
 
- $('#selector').on('click', function(){
-     window.location.href="#map";
- });
+  $('#selector').on('click', function(){
+  	window.location.href="#map";
+  });
 
- // var targetOffset = $(".topBar").offset().top;
- // $(window).scroll(function() {
- //     $('.backToTop').addClass('hidden');
-
- //     if ($('.topBar').position() === ) {
- //         $('.backToTop').addClass('show');
- //       } else {
- //         $('.backToTop').addClass('hidden');
- //       }
- //   });
-
- // var s = $("#nav-top");
- //   var pos = s.position();
- //   $(window).scroll(function() {
- //   });
-
+  var topOfOthDiv = $("#mapContainer").offset().top;
+  $(".backToTop").hide();
+  $(window).scroll(function() {
+    if ($(window).scrollTop() > topOfOthDiv) {
+    	$(".backToTop").show();
+    }
+  });
 
 };
 
