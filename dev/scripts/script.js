@@ -191,7 +191,7 @@ brewNoculars.init = function() {
   brewNoculars.getLocation();
   brewNoculars.getAddress();
   $('a').smoothScroll({
-  	//add in an option like direction:'top'
+  	offset: -100
   });
 
   $('#selector').on('click', function(){
