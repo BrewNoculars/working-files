@@ -61,6 +61,14 @@ brewNoculars.handlebars = function(brewerySpecifics){
 	var template = Handlebars.compile(myTemplate);
 	var renderedTemplate = template(brewerySpecifics);
 	$('.results').append(renderedTemplate);
+
+
+	$('.readMoreee').readmore({
+		speed: 100,
+		moreLink: '<a href="#">Read more</a>',
+		lessLink: '<a href="#">Close</a>',
+		collapsedHeight: 0
+		});
 };
 
 
@@ -174,16 +182,38 @@ brewNoculars.showMap = function(lat, lon) {
 		brewNoculars.mapBounds.extend(marker.position);
 
 }
-
-	//When the Page Loads start the App
+//When the Page Loads start the App
 brewNoculars.init = function() {
-  brewNoculars.getLocation();
-  brewNoculars.getAddress();
-  $('a').smoothScroll({
-  	//add in an option like direction:'top'
-  });
+ brewNoculars.getLocation();
+ brewNoculars.getAddress();
+ $('a').smoothScroll({
+
+     //add in an option like direction:'top'
+ });
+
+ $('#selector').on('click', function(){
+     window.location.href="#map";
+ });
+
+ // var targetOffset = $(".topBar").offset().top;
+ // $(window).scroll(function() {
+ //     $('.backToTop').addClass('hidden');
+
+ //     if ($('.topBar').position() === ) {
+ //         $('.backToTop').addClass('show');
+ //       } else {
+ //         $('.backToTop').addClass('hidden');
+ //       }
+ //   });
+
+ // var s = $("#nav-top");
+ //   var pos = s.position();
+ //   $(window).scroll(function() {
+ //   });
+
+
 };
 
 $(function() {
-  brewNoculars.init();
+ brewNoculars.init();
 })

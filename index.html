@@ -8,15 +8,17 @@
 	<link rel="stylesheet" href="public/styles/style.css">
 	<script id="myTemplate" type="x-handlebars-template">
 		<div class="resultsCards wrapperResults">
-			<div>
-			{{#if brewery.name}}<h2>{{brewery.name}}</h2>{{/if}}
-			{{#if brewery.images.squareMedium}}<img src="{{brewery.images.squareMedium}}" alt="" />{{/if}}
-			{{#if phone}} <h3>{{phone}}</h3>{{/if}}
-			{{#if brewery.website}} <a href="brewery.website">{{brewery.website}}</a>{{/if}}
-			{{#if streetAddress}}<h3>{{streetAddress}}</h3>{{/if}}
-			{{#if brewery.isOrganic}}<h3>Organic {{brewery.isOrganic}}</h3>{{/if}}
-			{{#if brewery.description}}<p>{{brewery.description}}</p>{{/if}}
-			
+			<div class="sarah">
+				{{#if brewery.name}}<h2>{{brewery.name}}</h2>{{/if}}
+				{{#if brewery.images.squareMedium}}<img src="{{brewery.images.squareMedium}}" alt="" />{{/if}}
+				{{#if phone}} <h3>{{phone}}</h3>{{/if}}
+				{{#if streetAddress}}<h3>{{streetAddress}}</h3>{{/if}}
+				<div>
+					<div class="readMoreee">
+						{{#if brewery.website}} <a href="brewery.website">{{brewery.website}}</a>{{/if}}
+						{{#if brewery.isOrganic}}<h3>Organic {{brewery.isOrganic}}</h3>{{/if}}
+						{{#if brewery.description}}<p >{{brewery.description}}</p>{{/if}}
+					</div>
 			</div>
 		</div>
 	</script>
@@ -52,6 +54,9 @@
 		</div>
 
 	</section>
+	<!-- <div class="wrapperResults">
+		<p class="readMoreee">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore dolore distinctio nisi natus accusamus maiores consequuntur, assumenda culpa saepe non illo quibusdam blanditiis qui rerum recusandae deleniti mollitia delectus, aperiam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam nihil possimus in quasi neque asperiores ullam repellat voluptates laborum doloremque, ipsam, quibusdam minus! Velit nemo, veritatis quisquam possimus, aperiam cumque. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio amet non asperiores eius sapiente id aut inventore? Quia eligendi aspernatur non, mollitia repellat saepe repellendus exercitationem harum cumque magnam vel!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore dolore distinctio nisi natus accusamus maiores consequuntur, assumenda culpa saepe non illo quibusdam blanditiis qui rerum recusandae deleniti mollitia delectus, aperiam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam nihil possimus in quasi neque asperiores ullam repellat voluptates laborum doloremque, ipsam, quibusdam minus! Velit nemo, veritatis quisquam possimus, aperiam cumque. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio amet non asperiores eius sapiente id aut inventore? Quia eligendi aspernatur non, mollitia repellat saepe repellendus exercitationem harum cumque magnam vel!</p>
+	</div> -->
 
 	<footer>
 		<p>BrewNoculars copyright 2016; coded by Sarah Karsh, Janel Lucia, and Heather Pierce</p>
@@ -60,8 +65,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCW8tHjXmHvzEH5qsjFzSH4NN7PVfumqu0&callback">
     </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
-	<script src="dev/scripts/script.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/Readmore.js/2.2.0/readmore.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-smooth-scroll/2.0.0/jquery.smooth-scroll.min.js"></script>
+	<script src="dev/scripts/script.js"></script>
+	<!-- <script src="/node_modules/readmore-js/readmore.min.js"></script> -->
 </body>
 </html>
