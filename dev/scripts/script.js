@@ -1,6 +1,13 @@
 var brewNoculars = {};
 
 brewNoculars.mapMarkers = [];
+function removeMarkers(){
+    for(i=0; i<brewNoculars.mapMarkers.length; i++){
+        brewNoculars.mapMarkers[i].setMap(null);
+    }
+}
+// var myTemplate = $('#myTemplate').html();
+
 // brewNoculars.mapBounds = new google.maps.LatLngBounds();
 
 
@@ -21,12 +28,14 @@ brewNoculars.getInfo = function (userLocation) {
 			}
 		}
 	}).then(function(bInfo){
-		console.log('this is binfo', bInfo);
+		// console.log('this is binfo', bInfo);
 		var brewerySpecifics = bInfo.data;
 
 		// console.log(brewerySpecifics);
 		brewerySpecifics.forEach(function(bData){
+			
 			brewNoculars.handlebars(bData);
+			// $('footer').empty();
 
 			var breweriesLat = bData.latitude;
 			var breweriesLng = bData.longitude;
@@ -47,12 +56,11 @@ brewNoculars.getInfo = function (userLocation) {
 }
 
 brewNoculars.handlebars = function(brewerySpecifics){
-
 	// console.log('this is brewery general', brewerySpecifics);
 	var myTemplate = $('#myTemplate').html();
 	var template = Handlebars.compile(myTemplate);
 	var renderedTemplate = template(brewerySpecifics);
-	$('footer').append(renderedTemplate);
+	$('.results').append(renderedTemplate);
 };
 
 
@@ -81,6 +89,7 @@ brewNoculars.getLocation = function() {
 
 brewNoculars.getSearchResults = function(search) {
   // console.log("brewNoculars.mapMarkers", brewNoculars.mapMarkers);
+  removeMarkers();
   $.ajax({
     url: 'https://proxy.hackeryou.com',
     method: 'GET',
@@ -93,7 +102,6 @@ brewNoculars.getSearchResults = function(search) {
       }
     }
   }).then(function(searchRes){
-
     // console.log("search results", searchRes);
     var addressLat = searchRes.results[0].geometry.location.lat;
     var addressLon = searchRes.results[0].geometry.location.lng;
