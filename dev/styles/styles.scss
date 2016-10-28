@@ -1,0 +1,157 @@
+@import 'setup';
+@import 'variables';
+@import 'responsiveFont';
+
+html {
+  font-size: 10px;
+}
+
+.wrapperHeader {
+	width: 65%;
+	margin: 0 auto;
+	max-width: 1100px;
+}
+
+.wrapperResults {
+  width:80%;
+  margin: 0 auto;
+  max-width: 1100px;
+}
+
+body{
+  font-size: 2rem;
+  font-family: 'Lato', sans-serif;
+}
+
+h1 {
+  font-family: 'Vast Shadow', serif;
+  font-size: 6rem;
+  margin-top: 0;
+}
+
+header {
+  background:url('../../images/landing-page.jpeg');
+  height:100vh;
+  background-repeat: no-repeat;
+  position: center;
+  background-attachment: fixed;
+  background-size:cover;
+}
+
+a {
+  text-decoration: none;
+}
+
+.topBar {
+  background: rgba(0,0,0,0.8);
+  color:white;
+  display: flex;
+  justify-content:space-between;
+  align-items:center;
+  position: fixed;
+  top:0;
+  // right:0;
+  width:100%;
+  z-index: 10;
+  h4 {
+    margin: 0;
+    padding:1rem;
+  }
+  .backToTop {
+    margin:0;
+    a {
+      color:white;
+      padding:1rem;
+      font-size: 1.8rem;
+    }
+  }
+}
+
+.header-search {
+  text-align: center;
+  h1 {
+    margin-bottom: 0;
+  }
+  h2 {
+    margin:0;
+  }
+  label {
+    display: block;
+  }
+  input[type=text] {
+    display: block;
+    margin:0 auto;
+  }
+}
+
+#map {
+  margin: 0 auto;
+  padding: 0;
+  height: 300px;
+}
+
+.results {
+  display:flex;
+  flex-wrap:wrap;
+  // flex: 1 1 33.33%;
+}
+
+.resultsCards{
+  width: 33%;
+  flex-basis:350px;
+}
+
+.individualBrew {
+  background-color:rgba(103,92,294,0.3);
+  border:2px solid black;
+  margin:20px 0;
+  text-align:center;
+  h2 {
+    min-height:72px;
+  }
+}
+
+// #selector {
+
+// }
+
+// form {
+//   display: flex;
+//   justify-content: flex-end;
+//   #user-input {
+//     width: 10%;
+//     -webkit-transition: width 0.4s ease-in-out;
+//     transition: width 0.4s ease-in-out;
+//     // display:inline-block;
+//   }
+//   #user-input:before{
+//     content: "\f105";
+//     color: $brewBlack;
+//     @include responsive-font(1.5vw, 10px, 20px);
+//     float : right;
+//     font-family: "FontAwesome";
+//   }
+//   /* When the input field gets focus, change its width to 100% */
+//   #user-input:focus {
+//     width: 60%;
+//     background: white;
+//   }
+// }
+
+
+
+// // All Media Queries
+
+// // Landscape phones and tablet
+// @media (max-width: 767px) {
+// 	// turn off wrapper margin 
+// 	.wrapper{
+// 		width: 90%;
+// 	}
+    
+// }
+ 
+// // Landscape phones and down
+// @media (max-width: 480px) {
+ 
+// }
