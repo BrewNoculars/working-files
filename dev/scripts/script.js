@@ -187,9 +187,10 @@ brewNoculars.init = function() {
   });
 
   var topOfOthDiv = $("#mapContainer").offset().top;
+  $(".backToTop").hide();
   $(window).scroll(function() {
     if ($(window).scrollTop() > topOfOthDiv) {
-    	$(".backToTop").addClass('show');
+    	$(".backToTop").show();
     }
   });
 
