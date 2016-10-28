@@ -38,6 +38,7 @@ brewNoculars.getInfo = function (userLocation) {
 
 			var breweriesLat = bData.latitude;
 			var breweriesLng = bData.longitude;
+			var breweryName = bData.brewery.name;
 
 			var breweryMarker = new google.maps.Marker({
 				position:new google.maps.LatLng(breweriesLat,breweriesLng),
@@ -149,11 +150,11 @@ brewNoculars.getAddress = function() {
 
 brewNoculars.showMap = function(lat, lon) {
 			// Create a LatLng object with the GPS coordinates.
-		 var myLatLng = new google.maps.LatLng(lat, lon);
+		var myLatLng = new google.maps.LatLng(lat, lon);
 		 brewNoculars.mapBounds = new google.maps.LatLngBounds();
 
 			// Create the Map Options
-		  var mapOptions = {
+		var mapOptions = {
 		    zoom: 15,
 		    center: myLatLng,
 		    mapTypeId: google.maps.MapTypeId.ROADMAP,
