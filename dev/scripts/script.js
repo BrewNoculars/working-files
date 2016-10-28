@@ -50,6 +50,9 @@ brewNoculars.getInfo = function (userLocation) {
 			// console.log(brewNoculars.mapMarkers);
 			brewNoculars.mapMarkers.push(breweryMarker);
 			brewNoculars.mapBounds.extend(breweryMarker.position);
+			// breweryMarker.addListener('click', function() {
+			// 	infowindow.open(brewNoculars.map, breweMarker);
+			// }); 
 			// console.log(brewNoculars.mapMarkers);
 		});
 	})
