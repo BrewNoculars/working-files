@@ -97,8 +97,8 @@ a {
 }
 
 .resultsCards{
-  width: 30%;
-
+  width: 33%;
+  flex-basis:350px;
 }
 
 .individualBrew {
@@ -106,6 +106,9 @@ a {
   border:2px solid black;
   margin:20px 0;
   text-align:center;
+  h2 {
+    min-height:72px;
+  }
 }
 
 // #selector {
