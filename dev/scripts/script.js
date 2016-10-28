@@ -22,12 +22,12 @@ brewNoculars.getInfo = function (userLocation) {
 			params: {
 				lat: userLocation.lat,
 				lng: userLocation.lon,
-				radius:5, //miles
+				radius:3, //miles
 				key: '3dae318cdfd5f407dccf3b5974924616'
 			}
 		}
 	}).then(function(bInfo){
-		// console.log('this is binfo', bInfo);
+		console.log('this is binfo', bInfo);
 		var brewerySpecifics = bInfo.data;
 
 		$('.results').empty();
