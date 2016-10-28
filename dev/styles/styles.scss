@@ -87,6 +87,7 @@ a {
       color:$brewBlack;
       padding: 0.5rem;
       display: inline-block;
+      font-weight:400;
     }
   }
   .intro {
@@ -110,6 +111,7 @@ a {
     padding: 0.5rem;
     font-style: italic;
     display: inline-block;
+    box-shadow: 0 0 10px black;
   }
   .submit {
     background-color: $brewDarkCopper;
@@ -118,14 +120,14 @@ a {
     display: inline-block;
     box-shadow: 0 0 10px black;
     margin-left: 1rem;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 1.8rem;
     // border-radius: 5px;
   }
 }
 
 #mapContainer {
-  padding-top: 5.5rem;
+  // padding-top: 5.5rem;
 }
 
 #map {
@@ -151,7 +153,7 @@ a {
 }
 
 .individualBrew {
-  background-color:rgba(103,92,294,0.3);
+  background-color:rgba(253,236,226,0.5);
   border:2px solid black;
   margin:20px 0;
   text-align:center;
