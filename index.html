@@ -27,13 +27,13 @@
 	<header>
 		<section class="topBar" id="topBar">
 			<h4>BrewNoculars</h4>
-			<p class="backToTop"><a href="#topBar">Back to Search</a></p>
+			<p class="backToTop"><a href="#header-search">Back to Search</a></p>
 		</section>
-		<section class="header-search wrapperHeader"> <!-- main search -->
+		<section class="header-search wrapperHeader" id="header-search"> <!-- main search -->
 			<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 445.08 142.75"><defs><style>.cls-1{font-size:45.62px;fill:#231f20;font-family:Vast Shadow;}</style></defs><title>BrewNoculars</title><text class="cls-1" transform="translate(25.58 121.01) rotate(-41.13)">B</text><text class="cls-1" transform="translate(57.94 93.27) rotate(-34.17)">r</text><text class="cls-1" transform="translate(81.35 77.12) rotate(-27.88)">e</text><text class="cls-1" transform="matrix(0.95, -0.31, 0.31, 0.95, 110.65, 60.33)">w</text><text class="cls-1" transform="matrix(0.99, -0.11, 0.11, 0.99, 164.83, 42.75)">N</text><text class="cls-1" transform="matrix(1, 0.06, -0.06, 1, 215.27, 37.97)">o</text><text class="cls-1" transform="translate(250.1 39.98) rotate(11.18)">c</text><text class="cls-1" transform="translate(283.94 46.52) rotate(19.22)">u</text><text class="cls-1" transform="translate(318.74 59.09) rotate(25.53)">l</text><text class="cls-1" transform="matrix(0.85, 0.53, -0.53, 0.85, 337.54, 67.48)">a</text><text class="cls-1" transform="translate(370.58 88.3) rotate(38.55)">r</text><text class="cls-1" transform="matrix(0.71, 0.7, -0.7, 0.71, 392.96, 105.89)">s</text></svg>
 			<h2>Find the closest brewery to you!</h2>
 			<p class="intro">Allow your browser to geolocate you</p>
-			<button><a href="#p1" class="smoothScroll">Go to map</a></button>
+			<button><a href="#mapContainer" class="smoothScroll">Go to map</a></button>
 			<p>Or</p>
 				<!-- input type for geolocation here -->
 			<form action="">
@@ -44,17 +44,20 @@
 		</section>
 	</header>
 
-	<section class="results wrapperResults">
-		<div id="p1">
-			<div id="map">
-				
-			</div>
+	<section id="mapContainer">
+		<div id="map">
+		
 		</div>
+	</section>
+
+	<section class="results wrapperResults">
+
 
 	</section>
 
 	<footer>
 		<p>BrewNoculars copyright 2016; coded by Sarah Karsh, Janel Lucia, and Heather Pierce</p>
+		<p>APIs courtesy of BreweryDB and Google</p>
 	</footer>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
