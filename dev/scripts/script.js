@@ -179,8 +179,10 @@ brewNoculars.showMap = function(lat, lon) {
 brewNoculars.init = function() {
   brewNoculars.getLocation();
   brewNoculars.getAddress();
+  $('a').smoothScroll({
+  	//add in an option like direction:'top'
+  });
 };
-
 
 $(function() {
   brewNoculars.init();
