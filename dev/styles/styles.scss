@@ -24,12 +24,6 @@ body{
   font-weight: 400;
 }
 
-h1 {
-  font-family: 'Vast Shadow', serif;
-  font-size: 6rem;
-  margin-top: 0;
-}
-
 header {
   background:url('../../images/landing-page.jpeg');
   height:100vh;
@@ -73,7 +67,7 @@ a {
 .header-search {
   text-align: center;
   svg {
-    margin-top: 6rem;
+    margin-top: 10rem;
   }
   button {
     background-color: $brewDarkCopper;
@@ -90,40 +84,50 @@ a {
       font-weight:400;
     }
   }
-  .intro {
-    margin-bottom: 0;
-    display: inline-block;
+  .searchContainer {
+    background-color:rgba(172,84,55,0.6);
+    margin:0 auto;
+    width:65%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border:8px double black;
+    .intro {
+      margin-bottom: 0;
+      display: inline-block;
+      font-size: 2rem;
+    }
+    .Or {
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    h2 {
+      margin:0;
+    }
+    label {
+      display: none;
+      margin-bottom: 1rem;
+    }
+    input[type=text] {
+      width:55%;
+      display: inline-block;
+      padding: 0.5rem;
+      font-style: italic;
+      display: inline-block;
+      box-shadow: 0 0 10px black;
+    }
+    .submit {
+      background-color: $brewDarkCopper;
+      border:none;
+      padding:1rem;
+      display: inline-block;
+      box-shadow: 0 0 10px black;
+      margin-left: 1rem;
+      font-weight: 400;
+      font-size: 1.8rem;
+      // border-radius: 5px;
+    }
   }
-  .Or {
-    text-transform: uppercase;
-    font-weight: 700;
-  }
-  h2 {
-    margin:0;
-  }
-  label {
-    display: block;
-    margin-bottom: 1rem;
-  }
-  input[type=text] {
-    width:50%;
-    display: inline-block;
-    padding: 0.5rem;
-    font-style: italic;
-    display: inline-block;
-    box-shadow: 0 0 10px black;
-  }
-  .submit {
-    background-color: $brewDarkCopper;
-    border:none;
-    padding:1rem;
-    display: inline-block;
-    box-shadow: 0 0 10px black;
-    margin-left: 1rem;
-    font-weight: 400;
-    font-size: 1.8rem;
-    // border-radius: 5px;
-  }
+  
 }
 
 #mapContainer {
@@ -184,48 +188,26 @@ a {
   }
 }
 
+.sorry {
+  padding: 10rem;
+  font-size: 4rem;
+  // margin:0 auto;
+  text-align: center;
+  text-shadow: 1px 1px 10px white;
+}
 
-// #selector {
+footer {
+  background-color: black;
+  color:white;
+  font-weight: 300;
+  font-size: 1.4rem;
+  text-align: center;
+  p {
+    margin:0;
+    &:first-child {
+      padding-top:2rem;
+    }
+  }
+}
 
-// }
-
-// form {
-//   display: flex;
-//   justify-content: flex-end;
-//   #user-input {
-//     width: 10%;
-//     -webkit-transition: width 0.4s ease-in-out;
-//     transition: width 0.4s ease-in-out;
-//     // display:inline-block;
-//   }
-//   #user-input:before{
-//     content: "\f105";
-//     color: $brewBlack;
-//     @include responsive-font(1.5vw, 10px, 20px);
-//     float : right;
-//     font-family: "FontAwesome";
-//   }
-//   /* When the input field gets focus, change its width to 100% */
-//   #user-input:focus {
-//     width: 60%;
-//     background: white;
-//   }
-// }
-
-
-
-// // All Media Queries
-
-// // Landscape phones and tablet
-// @media (max-width: 767px) {
-// 	// turn off wrapper margin 
-// 	.wrapper{
-// 		width: 90%;
-// 	}
-    
-// }
- 
-// // Landscape phones and down
-// @media (max-width: 480px) {
- 
-// }
+@import 'mediaQueries';
