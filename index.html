@@ -17,8 +17,9 @@
 				{{#if streetAddress}}<h3>{{streetAddress}}</h3>{{/if}}
 				<div>
 					<div class="readMoreee">
-						{{#if brewery.website}}{{brewery.website}}{{/if}}
-						{{#if brewery.isOrganic}}<h3>Organic {{brewery.isOrganic}}</h3>{{/if}}
+						{{#if brewery.website}} <a href="{{brewery.website}}" target = "_blank" class="hvr-sweep-to-right">{{brewery.website}} </a>{{/if}}
+						{{#if brewery.isOrganic}}<h3>Organic: {{brewery.isOrganic}}</h3>{{/if}}
+						{{#if openToPublic}}<h3>Open to public: {{openToPublic}}</h3>{{/if}}
 						{{#if brewery.description}}<p >{{brewery.description}}</p>{{/if}}
 					</div>
 			</div>
