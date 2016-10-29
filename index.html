@@ -13,14 +13,14 @@
 				{{#if brewery.images.medium}}<img src="{{brewery.images.medium}}" alt="logo for the brewery" />
 					{{else}}<img src="images/brewery-alt2.jpg" alt="pictures of beer on a bar">
 					{{/if}}
-				{{#if phone}} <h3>{{phone}}</h3>{{/if}}
-				{{#if streetAddress}}<h3>{{streetAddress}}</h3>{{/if}}
+				{{#if phone}} <p>{{phone}}</p>{{/if}}
+				{{#if streetAddress}}<p>{{streetAddress}}</p>{{/if}}
 				<div>
 					<div class="readMoreee">
 						{{#if brewery.website}} <a href="{{brewery.website}}" target = "_blank" class="hvr-sweep-to-right">{{brewery.website}} </a>{{/if}}
-						{{#if brewery.isOrganic}}<h3>Organic: {{brewery.isOrganic}}</h3>{{/if}}
-						{{#if openToPublic}}<h3>Open to public: {{openToPublic}}</h3>{{/if}}
-						{{#if brewery.description}}<p >{{brewery.description}}</p>{{/if}}
+						{{#if brewery.isOrganic}}<p>Organic: {{brewery.isOrganic}}</p>{{/if}}
+						{{#if openToPublic}}<p>Open to public: {{openToPublic}}</p>{{/if}}
+						{{#if brewery.description}}<p class="brewDescript">{{brewery.description}}</p>{{/if}}
 					</div>
 			</div>
 		</div>
