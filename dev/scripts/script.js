@@ -78,9 +78,9 @@ brewNoculars.handlebars = function(brewerySpecifics){
 
 
 	$('.readMoreee').readmore({
-		speed: 100,
-		moreLink: '<a href="#">Read more</a>',
-		lessLink: '<a href="#">Close</a>',
+		// speed: 700,
+		moreLink: '<a href="#" class="aMore">Read more</a>',
+		lessLink: '<a href="#" class="aMore" >Close</a>',
 		collapsedHeight: 0
 		});
 };
