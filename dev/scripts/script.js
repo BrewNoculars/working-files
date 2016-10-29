@@ -27,45 +27,50 @@ brewNoculars.getInfo = function (userLocation) {
 			}
 		}
 	}).then(function(bInfo){
-		console.log('this is binfo', bInfo);
+		// console.log('this is binfo', bInfo);
 		var brewerySpecifics = bInfo.data;
 
 		$('.results').empty();
 		// console.log(brewerySpecifics);
-		brewerySpecifics.forEach(function(bData){
+		if (brewerySpecifics === undefined) {
+			$('.sorry').text('Sorry, there are no breweries nearby! Try another address');
+		} else {
+			brewerySpecifics.forEach(function(bData){
 
-			brewNoculars.handlebars(bData);
+				brewNoculars.handlebars(bData);
 
-			var breweriesLat = bData.latitude;
-			var breweriesLng = bData.longitude;
-			var breweryName = bData.brewery.name;
+				var breweriesLat = bData.latitude;
+				var breweriesLng = bData.longitude;
+				var breweryName = bData.brewery.name;
 
-			//Define Business name for Map Info Card
-    		var infowindow = new google.maps.InfoWindow({
-    			content: bData.brewery.name
-  			});
+				//Define Business name for Map Info Card
+	    		var infowindow = new google.maps.InfoWindow({
+	    			content: bData.brewery.name
+	  			});
 
-			var breweryMarker = new google.maps.Marker({
-				position:new google.maps.LatLng(breweriesLat,breweriesLng),
-				map: brewNoculars.map,
-				title: breweryName,
-				icon: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
+				var breweryMarker = new google.maps.Marker({
+					position:new google.maps.LatLng(breweriesLat,breweriesLng),
+					map: brewNoculars.map,
+					title: breweryName,
+					icon: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
+				});
+
+				// console.log(brewNoculars.mapMarkers);
+				brewNoculars.mapMarkers.push(breweryMarker);
+				brewNoculars.mapBounds.extend(breweryMarker.position);
+				// breweryMarker.addListener('click', function() {
+				// 	infowindow.open(brewNoculars.map, breweMarker);
+				// }); 
+				// console.log(brewNoculars.mapMarkers);
+
+				breweryMarker.addListener('click', function(){
+					infowindow.open(brewNoculars.map, breweryMarker);
+				});
+				brewNoculars.map.fitBounds(brewNoculars.mapBounds);
 			});
+		}
 
-			// console.log(brewNoculars.mapMarkers);
-			brewNoculars.mapMarkers.push(breweryMarker);
-			brewNoculars.mapBounds.extend(breweryMarker.position);
-			// breweryMarker.addListener('click', function() {
-			// 	infowindow.open(brewNoculars.map, breweMarker);
-			// }); 
-			// console.log(brewNoculars.mapMarkers);
-
-			breweryMarker.addListener('click', function(){
-				infowindow.open(brewNoculars.map, breweryMarker);
-			});
-			brewNoculars.map.fitBounds(brewNoculars.mapBounds);
-		});
-		console.log("results ", bInfo.data);
+		// console.log("results ", bInfo.data);
 	})
 }
 
