@@ -22,7 +22,7 @@ brewNoculars.getInfo = function (userLocation) {
 			params: {
 				lat: userLocation.lat,
 				lng: userLocation.lon,
-				radius:3, //miles
+				radius:5, //miles
 				key: '3dae318cdfd5f407dccf3b5974924616'
 			}
 		}
@@ -84,8 +84,8 @@ brewNoculars.handlebars = function(brewerySpecifics){
 
 	$('.readMoreee').readmore({
 		// speed: 700,
-		moreLink: '<a href="#" class="aMore">Read more</a>',
-		lessLink: '<a href="#" class="aMore" >Close</a>',
+		moreLink: '<a href="#" class="aMore hvr-icon-sink-away" >Read more</a>',
+		lessLink: '<a href="#" class="aMore hvr-icon-sink-away-up" >Close</a>',
 		collapsedHeight: 0
 		});
 };
