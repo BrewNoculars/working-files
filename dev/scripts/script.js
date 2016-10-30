@@ -1,3 +1,13 @@
+//loading animation code
+jQuery(document).ready(function($) {  
+	// site preloader -- also uncomment the div in the header and the css style for #preloader
+	$(window).load(function(){
+		$('#preloader').fadeOut('slow',function(){
+			$(this).remove();});
+	});
+});
+
+
 var brewNoculars = {};
 
 brewNoculars.mapMarkers = [];
@@ -8,6 +18,7 @@ function removeMarkers(){
 }
 
 // brewNoculars.mapBounds = new google.maps.LatLngBounds();
+
 
 
 // Brewery DB API starts here!
