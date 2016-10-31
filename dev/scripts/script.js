@@ -147,7 +147,7 @@ brewNoculars.getSearchResults = function(search) {
         position: new google.maps.LatLng(addressLat, addressLon),
         map: brewNoculars.map,
         title: "You're Here!",
-        icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
+        icon: "https://maps.google.com/mapfiles/ms/icons/red-dot.png",
     });
 
     // console.log(marker);
@@ -193,7 +193,7 @@ brewNoculars.showMap = function(lat, lon) {
 		      map: brewNoculars.map,
 		      title: 'Found you!',
 		      animation: google.maps.Animation.DROP,
-		      icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+		      icon: "https://maps.google.com/mapfiles/ms/icons/red-dot.png"
 		  });
 
 		// check if this does anything?
