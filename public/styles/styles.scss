@@ -1,0 +1,328 @@
+@import 'setup';
+@import 'variables';
+@import 'responsiveFont';
+
+html {
+  font-size: 10px;
+}
+
+.wrapperHeader {
+	width: 65%;
+	margin: 0 auto;
+	max-width: 1100px;
+}
+
+.wrapperResults {
+  width:80%;
+  margin: 0 auto;
+  max-width: 1100px;
+}
+
+body{
+  font-size: 2rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+}
+
+header {
+  background:url('../../images/landing-page.jpeg');
+  height:100vh;
+  background-repeat: no-repeat;
+  position: center;
+  background-attachment: fixed;
+  background-size:cover;
+}
+
+a {
+  text-decoration: none;
+}
+
+.topBar {
+  background: rgba(0,0,0,0.8);
+  color:white;
+  display: flex;
+  justify-content:space-between;
+  align-items:center;
+  position: fixed;
+  top:0;
+  // right:0;
+  width:100%;
+  z-index: 10;
+  h4 {
+    margin: 0;
+    padding:1rem;
+    font-weight:300;
+  }
+  .backToTop {
+    margin:0;
+    a {
+      color:white;
+      padding:1rem;
+      font-size: 1.8rem;
+      font-weight:300;
+    }
+  }
+}
+
+.header-search {
+  text-align: center;
+  svg {
+    margin-top: 10rem;
+  }
+  button {
+    background-color: $brewDarkCopper;
+    border:none;
+    display: inline-block;
+    box-shadow: 0 0 10px black;
+    margin-left: 1rem;
+    font-weight: 300;
+    font-size: 1.8rem;
+    a {
+      color:$brewBlack;
+      padding: 0.5rem;
+      display: inline-block;
+      font-weight:400;
+    }
+  }
+  .searchContainer {
+    background-color:rgba(172,84,55,0.6);
+    margin:0 auto;
+    width:65%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border:8px double black;
+    .intro {
+      margin-bottom: 0;
+      display: inline-block;
+      font-size: 2rem;
+    }
+    .Or {
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    h2 {
+      margin:0;
+    }
+    label {
+      display: none;
+      margin-bottom: 1rem;
+    }
+    input[type=text] {
+      width:55%;
+      display: inline-block;
+      padding: 0.5rem;
+      font-style: italic;
+      display: inline-block;
+      box-shadow: 0 0 10px black;
+    }
+    .submit {
+      background-color: $brewDarkCopper;
+      border:none;
+      padding:1rem;
+      display: inline-block;
+      box-shadow: 0 0 10px black;
+      margin-left: 1rem;
+      font-weight: 400;
+      font-size: 1.8rem;
+      // border-radius: 5px;
+    }
+  }
+  
+}
+
+#mapContainer {
+  // padding-top: 5.5rem;
+}
+
+#map {
+  margin: 0 auto;
+  padding: 0;
+  height: 350px;
+}
+
+.results {
+  display:flex;
+  flex-wrap:wrap;
+  // flex: 1 1 33.33%;
+  background:url('../../images/brewery-alt.jpg');
+  background-repeat: no-repeat;
+  position: center;
+  background-attachment: fixed;
+  background-size:cover;
+  padding-top: 8rem;
+
+}
+.resultsCards{
+  width: 33%;
+  max-width:350px;
+  min-width:350px;
+}
+
+.individualBrew {
+  background-color:rgba(255,217,180,0.7);
+  box-shadow: 8px 8px 12px -6px rgba(0,0,0,0.75);
+  border-radius:5px;
+  margin:20px 0;
+  text-align:center;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  h2 {
+    // min-height:7rem;
+    padding-top: 2.5rem;
+  }
+  p {
+    padding:1rem 0;
+    margin:0;
+    font-weight:700;
+  }
+  img {
+    max-width:100%;
+  }
+  .brewDescript {
+    font-weight:400;
+  }
+  a {
+    padding: 1rem 2rem;
+    text-decoration:none;
+    color:black;
+    display:block;
+  }
+  .readMoreee{
+    padding:0 2rem;
+    a{
+      // padding-top:200px;
+      // color:pink;
+    }
+    p{
+    }
+  }
+}
+
+.sorry {
+  padding: 10rem;
+  font-size: 4rem;
+  // margin:0 auto;
+  text-align: center;
+  text-shadow: 1px 1px 10px white;
+}
+
+footer {
+  background-color: black;
+  color:white;
+  font-weight: 300;
+  font-size: 1.4rem;
+  text-align: center;
+  p {
+    margin:0;
+    &:first-child {
+      padding-top:2rem;
+    }
+  }
+}
+
+/* Sweep To Right */
+.hvr-sweep-to-right {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.hvr-sweep-to-right:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #2098D1;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-sweep-to-right:hover, .hvr-sweep-to-right:focus, .hvr-sweep-to-right:active {
+  color: $brewDarkCopper;
+}
+
+
+/* Icon Sink Away */
+.hvr-icon-sink-away {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  position: relative;
+  padding-right: 1.2em;
+}
+.hvr-icon-sink-away:before, .hvr-icon-sink-away:after {
+  content: "\f078";
+  position: absolute;
+  right: 1em;
+  padding: 0 1px;
+  font-family: FontAwesome;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.hvr-icon-sink-away:after {
+  opacity: 0;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+.hvr-icon-sink-away:hover:after, .hvr-icon-sink-away:focus:after, .hvr-icon-sink-away:active:after {
+  -webkit-animation-name: hvr-icon-sink-away;
+  animation-name: hvr-icon-sink-away;
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+}
+
+
+/* Icon Sink Away up*/
+.hvr-icon-sink-away-up {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  position: relative;
+  padding-right: 1.2em;
+}
+.hvr-icon-sink-away-up:before, .hvr-icon-sink-away-up:after {
+  content: "\f077";
+  position: absolute;
+  right: 1em;
+  padding: 0 1px;
+  font-family: FontAwesome;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.hvr-icon-sink-away-up:after {
+  opacity: 0;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+.hvr-icon-sink-away-up:hover:after, .hvr-icon-sink-away-up:focus:after, .hvr-icon-sink-away-up:active:after {
+  -webkit-animation-name: hvr-icon-sink-away;
+  animation-name: hvr-icon-sink-away;
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+}
+
+@import 'mediaQueries';
