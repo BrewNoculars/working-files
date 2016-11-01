@@ -24,7 +24,8 @@ brewNoculars.getInfo = function (userLocation) {
 				lng: userLocation.lon,
 				radius:4, //miles
 				key: '3dae318cdfd5f407dccf3b5974924616'
-			}
+			},
+			xmlToJSON: true
 		}
 	}).then(function(bInfo){
 		// console.log('this is binfo', bInfo);
