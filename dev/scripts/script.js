@@ -1,3 +1,4 @@
+
 var brewNoculars = {};
 
 brewNoculars.mapMarkers = [];
@@ -7,14 +8,12 @@ function removeMarkers(){
     }
 }
 
-// brewNoculars.mapBounds = new google.maps.LatLngBounds();
-
 
 // Brewery DB API starts here!
 brewNoculars.getInfo = function (userLocation) {
 	// console.log(userLocation);
 	$.ajax ({
-		url: 'https://proxy.hackeryou.com',
+		url: 'http://proxy.hackeryou.com',
 		method: 'GET',
 		dataType: 'json',
 		data:{
@@ -24,8 +23,7 @@ brewNoculars.getInfo = function (userLocation) {
 				lng: userLocation.lon,
 				radius:4, //miles
 				key: '3dae318cdfd5f407dccf3b5974924616'
-			},
-			xmlToJSON: true
+			}
 		}
 	}).then(function(bInfo){
 		// console.log('this is binfo', bInfo);
@@ -228,3 +226,4 @@ brewNoculars.init = function() {
 $(function() {
  brewNoculars.init();
 })
+
