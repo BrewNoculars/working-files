@@ -11,7 +11,7 @@ function removeMarkers(){
 brewNoculars.getInfo = function (userLocation) {
 	// console.log(userLocation);
 	$.ajax ({
-		url: 'http://proxy.hackeryou.com',
+		url: 'https://proxy.hackeryou.com',
 		method: 'GET',
 		dataType: 'json',
 		data:{
