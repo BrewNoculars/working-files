@@ -7,8 +7,6 @@ function removeMarkers(){
         brewNoculars.mapMarkers[i].setMap(null);
     }
 }
-
-
 // Brewery DB API starts here!
 brewNoculars.getInfo = function (userLocation) {
 	// console.log(userLocation);
@@ -17,7 +15,7 @@ brewNoculars.getInfo = function (userLocation) {
 		method: 'GET',
 		dataType: 'json',
 		data:{
-			reqUrl: 'http://api.brewerydb.com/v2/search/geo/point',
+			reqUrl: 'https://api.brewerydb.com/v2/search/geo/point',
 			params: {
 				lat: userLocation.lat,
 				lng: userLocation.lon,
